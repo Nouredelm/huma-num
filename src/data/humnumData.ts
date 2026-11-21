@@ -2,7 +2,8 @@ export type ToolCategory =
   | 'Analyse textuelle'
   | 'Édition & HTR'
   | 'Réseaux & SIG'
-  | 'Gestion & Données';
+  | 'Gestion & Données'
+  | 'Services & Infrastructures';
 
 export type LicenseType = 'Logiciel libre' | 'Institutionnel' | 'Freemium';
 export type DifficultyLevel = 'Initiation' | 'Intermédiaire' | 'Avancé';
@@ -127,7 +128,7 @@ export const RESEARCH_PHASES: ResearchPhase[] = [
     pitfall:
       'Collecter des images ou du texte brut sans conserver les métadonnées archivistiques (cote, folio, institution détentrice) compromet toute citation ultérieure.',
     deliverable: 'Dossier de corpus inventorié avec identifiants pérennes et plan de nommage normalisé.',
-    recommendedToolIds: ['tropy', 'escriptorium', 'zotero'],
+    recommendedToolIds: ['tropy', 'escriptorium', 'zotero', 'sharedocs'],
   },
   {
     id: 'structuration',
@@ -140,7 +141,7 @@ export const RESEARCH_PHASES: ResearchPhase[] = [
     pitfall:
       'Surenchérir sur la granularité du balisage dès le début du projet rend la saisie insoutenable ; il faut formaliser un schéma ODD minimal adapté aux questions de recherche.',
     deliverable: 'Fichiers XML-TEI validés par schéma RelaxNG et transcriptions HTR relues.',
-    recommendedToolIds: ['escriptorium', 'transkribus', 'oxygen-tei'],
+    recommendedToolIds: ['escriptorium', 'transkribus', 'oxygen-tei', 'openrefine'],
   },
   {
     id: 'analyse-textuelle',
@@ -153,7 +154,7 @@ export const RESEARCH_PHASES: ResearchPhase[] = [
     pitfall:
       'Interpréter un nuage de mots ou une classification factorielle sans contrôler la qualité de l’OCR ou la taille inégale des sous-corpus fausse les résultats.',
     deliverable: 'Tableaux de spécificités, concordanciers et protocoles reproductibles (scripts R ou Python).',
-    recommendedToolIds: ['txm', 'voyant', 'iramuteq', 'stylo', 'spacy'],
+    recommendedToolIds: ['txm', 'voyant', 'antconc', 'hyperbase', 'iramuteq', 'stylo', 'spacy'],
   },
   {
     id: 'spatial-reseaux',
@@ -166,7 +167,7 @@ export const RESEARCH_PHASES: ResearchPhase[] = [
     pitfall:
       'Projeter des lieux anciens sur un fond cartographique contemporain anachronique sans géoréférencer les frontières historiques.',
     deliverable: 'Cartes thématiques reproductibles et graphes bipartites exportés avec table des nœuds.',
-    recommendedToolIds: ['gephi', 'qgis', 'palladio', 'khartis', 'recogito'],
+    recommendedToolIds: ['gephi', 'qgis', 'nodegoat', 'palladio', 'khartis', 'recogito'],
   },
   {
     id: 'edition-diffusion',
@@ -179,7 +180,7 @@ export const RESEARCH_PHASES: ResearchPhase[] = [
     pitfall:
       'Dépendre d’un CMS propriétaire lourd pour publier une édition critique alors que la séparation entre source XML-TEI et moteur de rendu garantit la pérennité.',
     deliverable: 'Édition Web statique ou entrepôt consultable accompagné d’un apparat méthodologique.',
-    recommendedToolIds: ['omeka-s', 'oxygen-tei', 'khartis'],
+    recommendedToolIds: ['omeka-s', 'tei-publisher', 'mirador', 'hypotheses', 'oxygen-tei'],
   },
   {
     id: 'archivage-fair',
@@ -192,7 +193,7 @@ export const RESEARCH_PHASES: ResearchPhase[] = [
     pitfall:
       'Héberger ses données uniquement sur un serveur de laboratoire non maintenu ou sur un disque personnel après la soutenance ou la fin du contrat.',
     deliverable: 'Dépôt Nakala / Zenodo doté d’un DOI, d’une licence explicite et d’un fichier README.',
-    recommendedToolIds: ['nakala', 'zotero'],
+    recommendedToolIds: ['nakala', 'dmp-opidor', 'hal-shs', 'heurist', 'zotero'],
   },
 ];
 
@@ -649,6 +650,270 @@ export const TOOLS: DhTool[] = [
     ],
     url: 'https://nakala.fr/',
     citationBibtex: `@misc{humanum_nakala,\n  author = {{IR* Huma-Num}},\n  title = {Nakala : Entrepôt de données de recherche en sciences humaines et sociales},\n  institution = {CNRS},\n  url = {https://nakala.fr/}\n}`,
+  },
+  {
+    id: 'antconc',
+    name: 'AntConc',
+    category: 'Analyse textuelle',
+    license: 'Freemium',
+    level: 'Initiation',
+    maintainer: 'Laurence Anthony (Waseda University)',
+    summary: 'Concordancier léger multiplateforme pour l’exploration rapide de corpus textuels et collocations.',
+    description:
+      'Très répandu en linguistique de corpus, traduction et études littéraires, AntConc fonctionne sans installation serveur et permet d’extraire concordances KWIC, n-grammes, mots-clés statistiques (keyness) et cartes de dispersion.',
+    formats: ['TXT (UTF-8)', 'XML simplifié', 'CSV'],
+    useCases: [
+      'Repérage rapide de collocations et d’expressions figées dans un corpus littéraire',
+      'Comparaison de mots-clés spécifiques entre deux corpus (corpus d’étude vs corpus de référence)',
+      'Visualisation de la répartition d’un terme le long d’une œuvre (Plot)',
+    ],
+    workflowSteps: [
+      'Convertir les textes sources au format TXT encodé en UTF-8',
+      'Charger le dossier de corpus dans File > Open Corpus Manager',
+      'Interroger les motifs lexicaux via KWIC, Clusters/N-Grams et Keyword List',
+    ],
+    url: 'https://www.laurenceanthony.net/software/antconc/',
+    citationBibtex: `@software{anthony_antconc,\n  author = {Anthony, Laurence},\n  title = {AntConc: A freeware corpus analysis toolkit for concordancing and text analysis},\n  institution = {Waseda University},\n  url = {https://www.laurenceanthony.net/software/antconc/}\n}`,
+  },
+  {
+    id: 'hyperbase',
+    name: 'Hyperbase',
+    category: 'Analyse textuelle',
+    license: 'Institutionnel',
+    level: 'Intermédiaire',
+    maintainer: 'Laboratoire BCL (UMR 7320, Université Côte d’Azur / CNRS)',
+    summary: 'Logiciel de logométrie et d’analyse statistique approfondie des grands corpus littéraires et politiques.',
+    description:
+      'Héritier de l’école française de statistique lexicale fondée par Étienne Brunet, Hyperbase associe indexation hypertextuelle, calcul d’accroissement lexical, distance intertextuelle et analyses factorielles sur des corpus lemmatisés.',
+    formats: ['TXT balisé', 'CSV', 'Exports graphiques'],
+    useCases: [
+      'Mesure de la richesse lexicale et de la distance stylistique entre écrivains ou discours',
+      'Étude diachronique des thèmes et vocabulaires politiques sur plusieurs décennies',
+      'Exploration hypertextuelle des cooccurrences et contextes d’apparition',
+    ],
+    workflowSteps: [
+      'Préparer les textes partitionnés par auteur, date ou locuteur',
+      'Importer et lemmatiser le corpus dans l’environnement Hyperbase Web ou bureau',
+      'Générer les arbres arborés de proximité et courbes d’évolution lexicale',
+    ],
+    url: 'https://hyperbase.unice.fr/',
+    citationBibtex: `@software{brunet_hyperbase,\n  author = {Brunet, Étienne and Vanni, Laurent},\n  title = {Hyperbase : Logiciel de traitement documentaire et statistique des corpus textuels},\n  institution = {BCL, CNRS, Université Côte d'Azur},\n  url = {https://hyperbase.unice.fr/}\n}`,
+  },
+  {
+    id: 'tei-publisher',
+    name: 'TEI Publisher',
+    category: 'Édition & HTR',
+    license: 'Logiciel libre',
+    level: 'Intermédiaire',
+    maintainer: 'e-editiones Society',
+    summary: 'Boîte à outils et moteur de publication open source pour transformer directement le XML-TEI en éditions Web.',
+    description:
+      'Basé sur la spécification TEI Processing Model (incluse dans les fichiers ODD), TEI Publisher permet de publier des éditions critiques, fac-similés IIIF synchronisés, traductions parallèles et exports LaTeX/PDF/ePub sans écrire de lourdes feuilles XSLT.',
+    formats: ['XML-TEI P5', 'ODD (Processing Model)', 'IIIF', 'HTML5 / LaTeX / ePub'],
+    useCases: [
+      'Déploiement rapide d’une édition critique numérique avec vue synoptique image/texte',
+      'Génération multiformat (site Web, PDF imprimable, ePub) depuis une même source TEI',
+      'Création d’un portail d’édition collaboratif pérenne sans dépendance propriétaire',
+    ],
+    workflowSteps: [
+      'Rédiger les règles de rendu <model> dans le fichier ODD du projet',
+      'Déposer les fichiers XML-TEI dans l’instance eXist-db ou Docker de TEI Publisher',
+      'Générer et personnaliser l’application autonome d’édition critique',
+    ],
+    url: 'https://teipublisher.com/',
+    citationBibtex: `@software{eeditiones_tei_publisher,\n  author = {{e-editiones Society}},\n  title = {TEI Publisher: The Instant Publishing Toolbox},\n  url = {https://teipublisher.com/}\n}`,
+  },
+  {
+    id: 'mirador',
+    name: 'Mirador (Visionneuse IIIF)',
+    category: 'Édition & HTR',
+    license: 'Logiciel libre',
+    level: 'Initiation',
+    maintainer: 'Project Mirador / Consortium IIIF',
+    summary: 'Visionneuse et espace de travail comparatif pour consulter et annoter des manuscrits IIIF multi-sources.',
+    description:
+      'Mirador permet d’ouvrir côte à côte des manuscrits conservés dans différentes institutions (Gallica, Vatican, Bodleian, Nakala) à partir de l’URL de leur manifeste IIIF, de zoomer en très haute définition et d’afficher les couches d’annotations ou transcriptions.',
+    formats: ['IIIF Presentation API 2/3', 'IIIF Image API', 'Web Annotation (JSON-LD)'],
+    useCases: [
+      'Comparaison paléographique simultanée de plusieurs témoins d’un même texte médiéval',
+      'Reconstitution virtuelle d’un manuscrit démembré entre plusieurs bibliothèques',
+      'Intégration d’une visionneuse scientifique zoomable dans Omeka S ou une édition TEI',
+    ],
+    workflowSteps: [
+      'Récupérer l’URL du manifeste IIIF (manifest.json) sur Gallica, Biblissima ou Nakala',
+      'Charger un ou plusieurs manifestes dans l’espace multi-fenêtres Mirador',
+      'Activer les panneaux de tables des matières, métadonnées et annotations',
+    ],
+    url: 'https://projectmirador.org/',
+    citationBibtex: `@software{project_mirador,\n  author = {{Project Mirador Contributors}},\n  title = {Mirador: Open-source configurable IIIF viewer},\n  url = {https://projectmirador.org/}\n}`,
+  },
+  {
+    id: 'nodegoat',
+    name: 'nodegoat',
+    category: 'Réseaux & SIG',
+    license: 'Logiciel libre',
+    level: 'Intermédiaire',
+    maintainer: 'LAB1100 (Pim van Bree & Geert Kessels)',
+    summary: 'Environnement Web de gestion de données relationnelles, diachroniques et spatiales pour les SHS.',
+    description:
+      'Conçu spécialement pour l’histoire, la prosopographie et la sociologie historique, nodegoat permet de modéliser des objets complexes situés dans le temps et l’espace (sub-objects datés et géolocalisés) et d’en visualiser instantanément cartes et réseaux dynamiques.',
+    formats: ['CSV', 'JSON', 'GeoJSON', 'RDF / API REST'],
+    useCases: [
+      'Base prosopographique retraçant carrières, résidences et sociabilités sur plusieurs siècles',
+      'Cartographie dynamique et filtrage chronologique de réseaux d’acteurs historiques',
+      'Modélisation de données biographiques avec gestion de l’incertitude chronologique',
+    ],
+    workflowSteps: [
+      'Définir les types d’objets (Personnes, Œuvres, Institutions) et leurs sous-objets datés',
+      'Importer les données par lots CSV ou saisir via des formulaires normalisés',
+      'Explorer et exporter les vues géo-temporelles et graphes de relations',
+    ],
+    url: 'https://nodegoat.net/',
+    citationBibtex: `@software{vanbree_nodegoat,\n  author = {van Bree, Pim and Kessels, Geert},\n  title = {nodegoat: A web-based data management, network analysis & visualisation environment},\n  organization = {LAB1100},\n  url = {https://nodegoat.net/}\n}`,
+  },
+  {
+    id: 'openrefine',
+    name: 'OpenRefine',
+    category: 'Gestion & Données',
+    license: 'Logiciel libre',
+    level: 'Initiation',
+    maintainer: 'Communauté OpenRefine (ex-Freebase Gridworks)',
+    summary: 'Atelier libre pour nettoyer, transformer et réconcilier des données tabulaires avec des référentiels ouverts.',
+    description:
+      'Exécuté localement dans le navigateur sans envoyer les données en ligne, OpenRefine détecte les doublons orthographiques (clustering), normalise dates et toponymes et aligne automatiquement les entités avec Wikidata, IdRef, VIAF ou GeoNames.',
+    formats: ['CSV / TSV', 'JSON', 'XML', 'XLSX', 'RDF'],
+    useCases: [
+      'Nettoyage d’inventaires d’archives ou de tableaux prosopographiques hétérogènes',
+      'Alignement automatique de noms d’auteurs ou de lieux sur Wikidata et IdRef',
+      'Enrichissement de corpus par interrogation d’API externes directement en colonnes',
+    ],
+    workflowSteps: [
+      'Créer un projet en important un fichier CSV, Excel ou JSON',
+      'Appliquer les facettes et algorithmes de regroupement (Text Facet > Cluster) pour normaliser',
+      'Lancer une réconciliation (Reconcile) vers Wikidata ou GeoNames puis exporter en CSV propre',
+    ],
+    url: 'https://openrefine.org/',
+    citationBibtex: `@software{openrefine_community,\n  author = {{OpenRefine Contributors}},\n  title = {OpenRefine: A free, open source power tool for working with messy data},\n  url = {https://openrefine.org/}\n}`,
+  },
+  {
+    id: 'sharedocs',
+    name: 'Sharedocs (Huma-Num)',
+    category: 'Services & Infrastructures',
+    license: 'Institutionnel',
+    level: 'Initiation',
+    maintainer: 'IR* Huma-Num (CNRS)',
+    summary: 'Service collaboratif national de stockage sécurisé, partage de fichiers et exposition Web/IIIF pour les SHS.',
+    description:
+      'Hébergé sur l’infrastructure publique du CNRS, Sharedocs offre aux équipes de recherche un espace souverain (Nextcloud + serveur Web/IIIF) pour stocker des corpus en cours d’élaboration, gérer les droits par groupe et publier des ressources de travail.',
+    formats: ['Stockage multi-formats', 'WebDAV', 'IIIF', 'Partage fédéré HumanID'],
+    useCases: [
+      'Partage souverain de campagnes de numérisation ou de transcriptions au sein d’un projet ANR',
+      'Exposition directe de dossiers d’images au format IIIF pour alimenter eScriptorium ou Omeka',
+      'Travail collaboratif sans recourir à des clouds commerciaux hors Union européenne',
+    ],
+    workflowSteps: [
+      'Demander l’ouverture d’un espace projet auprès d’Huma-Num avec son compte HumanID',
+      'Organiser l’arborescence partagée et attribuer les droits de lecture/écriture aux partenaires',
+      'Synchroniser en local via WebDAV ou exposer les répertoires Web/IIIF utiles au projet',
+    ],
+    url: 'https://documentation.huma-num.fr/sharedocs/',
+    citationBibtex: `@misc{humanum_sharedocs,\n  author = {{IR* Huma-Num}},\n  title = {Sharedocs : Service de partage et de stockage collaboratif pour les SHS},\n  institution = {CNRS},\n  url = {https://documentation.huma-num.fr/sharedocs/}\n}`,
+  },
+  {
+    id: 'dmp-opidor',
+    name: 'DMP OPIDoR (Inist-CNRS)',
+    category: 'Services & Infrastructures',
+    license: 'Institutionnel',
+    level: 'Initiation',
+    maintainer: 'Inist-CNRS',
+    summary: 'Service en ligne d’accompagnement pour rédiger et partager des Plans de Gestion de Données (DMP) FAIR.',
+    description:
+      'Outil national de référence mis à disposition par le CNRS, DMP OPIDoR propose des modèles structurés (ANR, Horizon Europe, Science Europe) et des recommandations disciplinaires pour planifier la collecte, l’éthique, les licences et l’archivage des données SHS.',
+    formats: ['Modèles ANR / Horizon Europe', 'Export PDF / DOCX / JSON (maDMP)'],
+    useCases: [
+      'Rédaction du Plan de Gestion de Données exigé à T+6 mois par l’ANR ou Horizon Europe',
+      'Formalisation de la politique de sauvegarde et d’ouverture des données d’une thèse',
+      'Collaboration entre chercheurs, ingénieurs et délégués à la protection des données (DPO)',
+    ],
+    workflowSteps: [
+      'Se connecter via la fédération d’identité académique (Renater) et choisir le modèle ANR ou générique',
+      'Renseigner les jeux de données du projet (formats ouverts, métadonnées, entrepôt Nakala)',
+      'Partager le plan avec l’équipe et exporter la version livrable en PDF ou maDMP JSON',
+    ],
+    url: 'https://dmp.opidor.fr/',
+    citationBibtex: `@misc{inist_dmp_opidor,\n  author = {{Inist-CNRS}},\n  title = {DMP OPIDoR : Outil d'aide à la rédaction de plans de gestion de données},\n  institution = {CNRS},\n  url = {https://dmp.opidor.fr/}\n}`,
+  },
+  {
+    id: 'hal-shs',
+    name: 'HAL-SHS & Sciencesconf (CCSD)',
+    category: 'Services & Infrastructures',
+    license: 'Institutionnel',
+    level: 'Initiation',
+    maintainer: 'CCSD (CNRS, INRIA, INRAE)',
+    summary: 'Services nationaux d’archive ouverte pluridisciplinaire, gestion de colloques et revues Episciences.',
+    description:
+      'Le Centre pour la communication scientifique directe (CCSD) opère l’archive ouverte HAL (et son portail HAL-SHS) pour le dépôt pérenne des publications et thèses, ainsi que Sciencesconf pour l’organisation des colloques et Episciences pour les épi-revues diamant.',
+    formats: ['PDF/A', 'XML-TEI HAL', 'BibTeX', 'API REST / OAI-PMH', 'SWORD'],
+    useCases: [
+      'Dépôt en accès ouvert des articles, communications et thèses avec identifiant pérenne',
+      'Création d’une collection HAL de laboratoire ou de programme de recherche avec export CV',
+      'Gestion complète des soumissions, relectures et actes d’un colloque sur Sciencesconf',
+    ],
+    workflowSteps: [
+      'Créer son IdHAL pour unifier ses différentes formes de signature d’auteur',
+      'Déposer le manuscrit auteur accepté (MAA) ou la publication ouverte avec métadonnées complètes',
+      'Récupérer les exports BibTeX, TEI ou listes de publications pour les rapports HCÉRES / ANR',
+    ],
+    url: 'https://hal.science/',
+    citationBibtex: `@misc{ccsd_hal,\n  author = {{CCSD - CNRS}},\n  title = {HAL : Archive ouverte pluridisciplinaire},\n  institution = {CNRS},\n  url = {https://hal.science/}\n}`,
+  },
+  {
+    id: 'heurist',
+    name: 'Heurist (Service Huma-Num)',
+    category: 'Services & Infrastructures',
+    license: 'Logiciel libre',
+    level: 'Intermédiaire',
+    maintainer: 'University of Sydney / IR* Huma-Num',
+    summary: 'Service hébergé de conception de bases de données relationnelles et éditoriales sans programmation pour les SHS.',
+    description:
+      'Déployé gratuitement pour la communauté française via Huma-Num, Heurist permet aux chercheurs en histoire, archéologie ou histoire de l’art de modéliser rapidement des bases de données complexes (entités, relations, cartes, chronologies) et d’en générer le site Web public.',
+    formats: ['XML', 'JSON', 'GeoJSON', 'CSV', 'RDF / KML'],
+    useCases: [
+      'Création d’une base prosopographique, archéologique ou d’inventaire patrimonial sans développeur',
+      'Visualisation cartographique et réseau directement adossée aux fiches de recherche',
+      'Publication d’un site vitrine et moteur de recherche multi-critères hébergé durablement',
+    ],
+    workflowSteps: [
+      'Ouvrir une base sur l’instance heurist.huma-num.fr via son compte HumanID',
+      'Adapter les types d’entités et vocabulaires contrôlés à son objet d’étude',
+      'Importer les données CSV/XML et publier les vues Web, cartes et réseaux',
+    ],
+    url: 'https://heurist.huma-num.fr/',
+    citationBibtex: `@software{johnson_heurist,\n  author = {Johnson, Ian},\n  title = {Heurist: Flexible database and web publishing system for humanities research},\n  institution = {University of Sydney / IR* Huma-Num},\n  url = {https://heuristnetwork.org/}\n}`,
+  },
+  {
+    id: 'hypotheses',
+    name: 'Hypothèses (OpenEdition)',
+    category: 'Services & Infrastructures',
+    license: 'Institutionnel',
+    level: 'Initiation',
+    maintainer: 'OpenEdition (CNRS, AMU, EHESS, Avignon Université)',
+    summary: 'Service public d’hébergement et de valorisation de carnets de recherche scientifiques en sciences humaines.',
+    description:
+      'Plateforme francophone et européenne de blogging scientifique, Hypothèses permet de documenter la recherche « en train de se faire » (billets méthodologiques, séminaires, veille bibliographique) avec attribution d’un ISSN et indexation automatique dans Isidore et la BnF.',
+    formats: ['WordPress scientifique', 'RSS / Atom', 'OAI-PMH', 'Intégration Zotero / Nakala'],
+    useCases: [
+      'Diffusion régulière des avancées méthodologiques et comptes rendus d’un séminaire doctoral',
+      'Valorisation ouverte des coulisses d’une édition critique ou d’une enquête de terrain',
+      'Publication de bibliographies commentées synchronisées avec Zotero',
+    ],
+    workflowSteps: [
+      'Soumettre une demande d’ouverture de carnet présentant le projet éditorial scientifique',
+      'Configurer les métadonnées académiques et obtenir l’ISSN du carnet',
+      'Publier des billets citables et archivés sur le long terme dans le catalogue OpenEdition',
+    ],
+    url: 'https://hypotheses.org/',
+    citationBibtex: `@misc{openedition_hypotheses,\n  author = {{OpenEdition}},\n  title = {Hypothèses : Plateforme de carnets de recherche en sciences humaines et sociales},\n  institution = {CNRS, EHESS, Aix-Marseille Université},\n  url = {https://hypotheses.org/}\n}`,
   },
 ];
 
@@ -1151,5 +1416,25 @@ export const ECOSYSTEM_ITEMS: EcosystemItem[] = [
     description:
       'Agenda scientifique de référence recensant appels à communications, journées d’études, écoles d’été et offres de contrats doctoraux en SHS et HN.',
     url: 'https://calenda.org/',
+  },
+  {
+    id: 'ccsd-hal',
+    name: 'CCSD — Archive ouverte HAL, Sciencesconf & Episciences',
+    type: 'Infrastructures',
+    location: 'Villeurbanne (CNRS · INRIA · INRAE)',
+    accessNote: 'Services nationaux de science ouverte',
+    description:
+      'Unité d’appui et de recherche opérant les services publics d’archive ouverte (HAL / HAL-SHS), de gestion de conférences scientifiques (Sciencesconf) et d’épi-revues diamant.',
+    url: 'https://www.ccsd.cnrs.fr/',
+  },
+  {
+    id: 'consortiums-hn',
+    name: 'Consortiums Huma-Num (CAHIER, Ariane, 3DHN, MASA+)',
+    type: 'Réseaux & Veille',
+    location: 'Réseaux disciplinaires nationaux (CNRS)',
+    accessNote: 'Guides de bonnes pratiques & Groupes de travail',
+    description:
+      'Réseau de consortiums thématiques produisant guides méthodologiques, référentiels et formations dédiées aux corpus d’auteurs, aux analyses textuelles, à la 3D et à l’archéologie.',
+    url: 'https://www.huma-num.fr/les-consortiums-hn/',
   },
 ];

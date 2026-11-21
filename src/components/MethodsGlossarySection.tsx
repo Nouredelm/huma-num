@@ -1,5 +1,5 @@
 import {useMemo, useState} from 'react';
-import {Bookmark, Check, Copy, Search} from 'lucide-react';
+import {Bookmark, Check, Copy, Search, X} from 'lucide-react';
 import {
   BIBLIOGRAPHY,
   GLOSSARY_TERMS,
@@ -19,25 +19,69 @@ const BIB_THEMES: Array<'Tout' | BibEntry['theme']> = [
   'Épistémologie',
 ];
 
+function normalizeText(value: string): string {
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+}
+
+function HighlightMatch({text, query}: {text: string; query: string}) {
+  const trimmed = query.trim();
+  if (!trimmed) return <>{text}</>;
+
+  const normalizedSource = normalizeText(text);
+  const normalizedQuery = normalizeText(trimmed);
+  if (!normalizedQuery) return <>{text}</>;
+
+  const idx = normalizedSource.indexOf(normalizedQuery);
+  if (idx === -1) return <>{text}</>;
+
+  const before = text.slice(0, idx);
+  const match = text.slice(idx, idx + trimmed.length);
+  const after = text.slice(idx + trimmed.length);
+
+  return (
+    <>
+      {before}
+      <mark className="bg-[#1E3A8A]/15 dark:bg-[#60A5FA]/25 text-inherit rounded-xs px-0.5">
+        {match}
+      </mark>
+      {after}
+    </>
+  );
+}
+
 export function MethodsGlossarySection({
   isSaved,
   onToggleSaveBib,
 }: MethodsGlossarySectionProps) {
   const [glossarySearch, setGlossarySearch] = useState('');
+  const [glossaryCategory, setGlossaryCategory] = useState<string>('Toutes');
   const [bibTheme, setBibTheme] = useState<'Tout' | BibEntry['theme']>('Tout');
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
+  const glossaryCategories = useMemo(
+    () => ['Toutes', ...Array.from(new Set(GLOSSARY_TERMS.map((item) => item.category)))],
+    [],
+  );
+
   const filteredGlossary = useMemo(() => {
-    const q = glossarySearch.trim().toLowerCase();
-    if (!q) return GLOSSARY_TERMS;
-    return GLOSSARY_TERMS.filter(
-      (item) =>
-        item.term.toLowerCase().includes(q) ||
-        item.english.toLowerCase().includes(q) ||
-        item.definition.toLowerCase().includes(q) ||
-        item.category.toLowerCase().includes(q),
-    );
-  }, [glossarySearch]);
+    const q = normalizeText(glossarySearch.trim());
+    return GLOSSARY_TERMS.filter((item) => {
+      if (glossaryCategory !== 'Toutes' && item.category !== glossaryCategory) {
+        return false;
+      }
+      if (!q) return true;
+      return (
+        normalizeText(item.term).includes(q) ||
+        normalizeText(item.english).includes(q) ||
+        normalizeText(item.definition).includes(q) ||
+        normalizeText(item.category).includes(q) ||
+        item.related.some((rel) => normalizeText(rel).includes(q))
+      );
+    });
+  }, [glossarySearch, glossaryCategory]);
 
   const filteredBib = useMemo(() => {
     if (bibTheme === 'Tout') return BIBLIOGRAPHY;
@@ -76,30 +120,87 @@ export function MethodsGlossarySection({
               <h3 className="font-serif text-2xl font-semibold text-[#18181B] dark:text-[#F4F4F5]">
                 Glossaire des notions
               </h3>
-              <span className="text-xs text-[#52525B] dark:text-[#A1A1AA] tabular-nums">
-                {filteredGlossary.length} entrées
+              <span
+                aria-live="polite"
+                className="text-xs text-[#52525B] dark:text-[#A1A1AA] tabular-nums"
+              >
+                {filteredGlossary.length} / {GLOSSARY_TERMS.length} entrées
               </span>
             </div>
 
-            <div className="relative mb-5">
-              <Search
-                className="w-4 h-4 text-[#71717A] dark:text-[#A1A1AA] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
-                aria-hidden="true"
-              />
-              <input
-                type="search"
-                value={glossarySearch}
-                onChange={(e) => setGlossarySearch(e.target.value)}
-                placeholder="Filtrer le glossaire (TEI, FAIR, HTR...)"
-                aria-label="Filtrer le glossaire"
-                className="w-full pl-9 pr-3 py-2 text-sm bg-white dark:bg-[#18181B] border border-[#D6D3CB] dark:border-[#3A3A42] rounded-md text-[#18181B] dark:text-[#F4F4F5] placeholder:text-[#71717A] focus:outline-none focus:border-[#1E3A8A] dark:focus:border-[#60A5FA]"
-              />
+            <div className="space-y-3 mb-5">
+              <div className="relative">
+                <Search
+                  className="w-4 h-4 text-[#71717A] dark:text-[#A1A1AA] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
+                  aria-hidden="true"
+                />
+                <input
+                  type="search"
+                  value={glossarySearch}
+                  onChange={(e) => setGlossarySearch(e.target.value)}
+                  placeholder="Rechercher un terme, mot-clé (TEI, FAIR, HTR...)"
+                  aria-label="Rechercher dans le glossaire en temps réel"
+                  className="w-full pl-9 pr-9 py-2.5 text-sm bg-white dark:bg-[#18181B] border border-[#D6D3CB] dark:border-[#3A3A42] rounded-md text-[#18181B] dark:text-[#F4F4F5] placeholder:text-[#71717A] focus:outline-none focus:border-[#1E3A8A] dark:focus:border-[#60A5FA]"
+                />
+                {glossarySearch && (
+                  <button
+                    type="button"
+                    onClick={() => setGlossarySearch('')}
+                    aria-label="Effacer la recherche du glossaire"
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#71717A] hover:text-[#18181B] dark:hover:text-[#F4F4F5] cursor-pointer"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+
+              <div className="flex items-center justify-between gap-3">
+                <label htmlFor="glossary-category-select" className="text-xs font-medium text-[#52525B] dark:text-[#A1A1AA] shrink-0">
+                  Domaine :
+                </label>
+                <select
+                  id="glossary-category-select"
+                  value={glossaryCategory}
+                  onChange={(e) => setGlossaryCategory(e.target.value)}
+                  className="flex-1 text-xs bg-white dark:bg-[#18181B] border border-[#D6D3CB] dark:border-[#3A3A42] rounded-md px-2.5 py-1.5 text-[#18181B] dark:text-[#F4F4F5] focus:outline-none focus:border-[#1E3A8A] dark:focus:border-[#60A5FA]"
+                >
+                  {glossaryCategories.map((cat) => (
+                    <option key={cat} value={cat}>
+                      {cat}
+                    </option>
+                  ))}
+                </select>
+                {(glossarySearch || glossaryCategory !== 'Toutes') && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setGlossarySearch('');
+                      setGlossaryCategory('Toutes');
+                    }}
+                    className="text-xs font-medium text-[#1E3A8A] dark:text-[#60A5FA] hover:underline underline-offset-4 whitespace-nowrap shrink-0 cursor-pointer"
+                  >
+                    Réinitialiser
+                  </button>
+                )}
+              </div>
             </div>
 
             <div className="border border-[#E4E2DC] dark:border-[#2E2E34] rounded-md bg-white dark:bg-[#18181B] divide-y divide-[#E4E2DC] dark:divide-[#2E2E34] max-h-[680px] overflow-y-auto">
               {filteredGlossary.length === 0 ? (
-                <div className="p-6 text-center text-sm text-[#52525B] dark:text-[#A1A1AA]">
-                  Aucune notion trouvée pour « {glossarySearch} ».
+                <div className="p-8 text-center">
+                  <p className="text-sm text-[#52525B] dark:text-[#A1A1AA]">
+                    Aucune notion trouvée pour « {glossarySearch} ».
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setGlossarySearch('');
+                      setGlossaryCategory('Toutes');
+                    }}
+                    className="mt-3 text-xs font-medium text-[#1E3A8A] dark:text-[#60A5FA] hover:underline underline-offset-4 cursor-pointer"
+                  >
+                    Afficher toutes les notions
+                  </button>
                 </div>
               ) : (
                 filteredGlossary.map((item) => (
@@ -107,13 +208,15 @@ export function MethodsGlossarySection({
                     <p className="text-xs text-[#52525B] dark:text-[#A1A1AA]">
                       <span>{item.category}</span>
                       <span aria-hidden="true" className="mx-1.5 text-[#A1A1AA] dark:text-[#52525B]">·</span>
-                      <span className="italic">{item.english}</span>
+                      <span className="italic">
+                        <HighlightMatch text={item.english} query={glossarySearch} />
+                      </span>
                     </p>
                     <h4 className="mt-1 font-serif text-xl font-semibold text-[#18181B] dark:text-[#F4F4F5]">
-                      {item.term}
+                      <HighlightMatch text={item.term} query={glossarySearch} />
                     </h4>
                     <p className="mt-2 text-sm leading-relaxed text-[#3F3F46] dark:text-[#D4D4D8]">
-                      {item.definition}
+                      <HighlightMatch text={item.definition} query={glossarySearch} />
                     </p>
                     {item.related.length > 0 && (
                       <p className="mt-2.5 text-xs text-[#71717A] dark:text-[#A1A1AA]">
@@ -122,7 +225,10 @@ export function MethodsGlossarySection({
                           <span key={rel}>
                             <button
                               type="button"
-                              onClick={() => setGlossarySearch(rel)}
+                              onClick={() => {
+                                setGlossaryCategory('Toutes');
+                                setGlossarySearch(rel);
+                              }}
                               className="text-[#1E3A8A] dark:text-[#60A5FA] hover:underline underline-offset-2 cursor-pointer"
                             >
                               {rel}

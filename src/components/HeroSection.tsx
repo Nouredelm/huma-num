@@ -91,7 +91,7 @@ export function HeroSection({
               {toolCount}
             </p>
             <p className="mt-1 text-xs text-[#52525B] dark:text-[#A1A1AA]">
-              Outils évalués par usage et licence
+              Outils &amp; services évalués par usage
             </p>
           </div>
           <div className="p-5">

@@ -20,6 +20,7 @@ const CATEGORIES: Array<'Tous' | ToolCategory> = [
   'Édition & HTR',
   'Réseaux & SIG',
   'Gestion & Données',
+  'Services & Infrastructures',
 ];
 
 const LICENSES: Array<'Toutes' | LicenseType> = [
@@ -82,17 +83,17 @@ export function ToolsDirectorySection({
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-[#E4E2DC] dark:border-[#2E2E34]">
           <div>
             <p className="text-xs text-[#52525B] dark:text-[#A1A1AA] mb-2">
-              02. Boîte à outils curatée
+              02. Boîte à outils &amp; Services scientifiques
               <span aria-hidden="true" className="mx-2 text-[#A1A1AA] dark:text-[#52525B]">·</span>
-              Logiciels, plateformes &amp; bibliothèques
+              Logiciels, plateformes &amp; services institutionnels
             </p>
             <h2 className="font-serif text-3xl lg:text-4xl font-semibold text-[#18181B] dark:text-[#F4F4F5] text-balance">
-              Répertoire des outils pour la recherche
+              Répertoire des outils et services pour la recherche
             </h2>
           </div>
 
           <p className="text-sm text-[#52525B] dark:text-[#A1A1AA] tabular-nums shrink-0">
-            {filteredTools.length} {filteredTools.length > 1 ? 'outils affichés' : 'outil affiché'} sur {TOOLS.length}
+            {filteredTools.length} {filteredTools.length > 1 ? 'ressources affichées' : 'ressource affichée'} sur {TOOLS.length}
           </p>
         </div>
 
