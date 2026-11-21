@@ -250,6 +250,7 @@ export function CorporaStandardsSection({
                 </p>
                 <p className="text-sm leading-relaxed text-[#425E73] dark:text-[#C3D7E5]">
                   {activeStandard.whyItMatters}
+                  {activeStandard.url && <a className="block mt-3 underline text-[#2D5876] dark:text-[#D8C497]" href={activeStandard.url} target="_blank" rel="noopener noreferrer">Documentation officielle ↗</a>}
                 </p>
               </div>
             </div>

@@ -63,6 +63,7 @@ export interface StandardSpec {
   whyItMatters: string;
   snippetLabel: string;
   snippet: string;
+  url?: string;
 }
 
 export interface GlossaryTerm {
@@ -915,6 +916,304 @@ export const TOOLS: DhTool[] = [
     url: 'https://hypotheses.org/',
     citationBibtex: `@misc{openedition_hypotheses,\n  author = {{OpenEdition}},\n  title = {Hypothèses : Plateforme de carnets de recherche en sciences humaines et sociales},\n  institution = {CNRS, EHESS, Aix-Marseille Université},\n  url = {https://hypotheses.org/}\n}`,
   },
+  {
+    "id": "kraken",
+    "name": "Kraken",
+    "category": "Édition & HTR",
+    "license": "Logiciel libre",
+    "level": "Avancé",
+    "maintainer": "Projet et communauté — voir le site officiel",
+    "url": "https://kraken.re/",
+    "summary": "OCR et HTR pour les documents historiques, dont des écritures arabes.",
+    "description": "OCR et HTR pour les documents historiques, dont des écritures arabes. Choisir les paramètres selon le corpus, documenter les versions et vérifier les résultats sur un échantillon de référence.",
+    "formats": [
+      "PAGE XML",
+      "ALTO XML",
+      "TXT"
+    ],
+    "useCases": [
+      "OCR et HTR pour les documents historiques, dont des écritures arabes."
+    ],
+    "workflowSteps": [
+      "Constituer des transcriptions de référence",
+      "Séparer entraînement et test",
+      "Mesurer le CER et relire les erreurs"
+    ],
+    "citationBibtex": "@misc{kraken,\n title={Kraken},\n howpublished={https://kraken.re/},\n note={Documentation officielle ; préciser la version utilisée}\n}"
+  },
+  {
+    "id": "tesseract",
+    "name": "Tesseract OCR",
+    "category": "Édition & HTR",
+    "license": "Logiciel libre",
+    "level": "Intermédiaire",
+    "maintainer": "Projet et communauté — voir le site officiel",
+    "url": "https://tesseract-ocr.github.io/",
+    "summary": "Reconnaissance de caractères imprimés ; choisir un modèle linguistique adapté.",
+    "description": "Reconnaissance de caractères imprimés ; choisir un modèle linguistique adapté. Choisir les paramètres selon le corpus, documenter les versions et vérifier les résultats sur un échantillon de référence.",
+    "formats": [
+      "TXT",
+      "hOCR",
+      "TSV"
+    ],
+    "useCases": [
+      "Reconnaissance de caractères imprimés ; choisir un modèle linguistique adapté."
+    ],
+    "workflowSteps": [
+      "Préparer les images",
+      "Sélectionner le modèle linguistique",
+      "Comparer à une transcription humaine"
+    ],
+    "citationBibtex": "@misc{tesseract,\n title={Tesseract OCR},\n howpublished={https://tesseract-ocr.github.io/},\n note={Documentation officielle ; préciser la version utilisée}\n}"
+  },
+  {
+    "id": "catma",
+    "name": "CATMA",
+    "category": "Analyse textuelle",
+    "license": "Logiciel libre",
+    "level": "Initiation",
+    "maintainer": "Projet et communauté — voir le site officiel",
+    "url": "https://catma.de/",
+    "summary": "Annotation qualitative et exploration collaborative de textes.",
+    "description": "Annotation qualitative et exploration collaborative de textes. Choisir les paramètres selon le corpus, documenter les versions et vérifier les résultats sur un échantillon de référence.",
+    "formats": [
+      "TXT",
+      "XML",
+      "CSV"
+    ],
+    "useCases": [
+      "Annotation qualitative et exploration collaborative de textes."
+    ],
+    "workflowSteps": [
+      "Définir les catégories",
+      "Annoter un échantillon",
+      "Comparer les interprétations"
+    ],
+    "citationBibtex": "@misc{catma,\n title={CATMA},\n howpublished={https://catma.de/},\n note={Documentation officielle ; préciser la version utilisée}\n}"
+  },
+  {
+    "id": "inception",
+    "name": "INCEpTION",
+    "category": "Analyse textuelle",
+    "license": "Logiciel libre",
+    "level": "Avancé",
+    "maintainer": "Projet et communauté — voir le site officiel",
+    "url": "https://inception-project.github.io/",
+    "summary": "Annotation linguistique et sémantique, entités et relations.",
+    "description": "Annotation linguistique et sémantique, entités et relations. Choisir les paramètres selon le corpus, documenter les versions et vérifier les résultats sur un échantillon de référence.",
+    "formats": [
+      "CoNLL",
+      "UIMA CAS"
+    ],
+    "useCases": [
+      "Annotation linguistique et sémantique, entités et relations."
+    ],
+    "workflowSteps": [
+      "Créer les couches d’annotation",
+      "Fixer un guide de décision",
+      "Auditer les annotations"
+    ],
+    "citationBibtex": "@misc{inception,\n title={INCEpTION},\n howpublished={https://inception-project.github.io/},\n note={Documentation officielle ; préciser la version utilisée}\n}"
+  },
+  {
+    "id": "nltk",
+    "name": "NLTK",
+    "category": "Analyse textuelle",
+    "license": "Logiciel libre",
+    "level": "Intermédiaire",
+    "maintainer": "Projet et communauté — voir le site officiel",
+    "url": "https://www.nltk.org/",
+    "summary": "Bibliothèque Python de traitement linguistique et de concordances.",
+    "description": "Bibliothèque Python de traitement linguistique et de concordances. Choisir les paramètres selon le corpus, documenter les versions et vérifier les résultats sur un échantillon de référence.",
+    "formats": [
+      "TXT",
+      "Python"
+    ],
+    "useCases": [
+      "Bibliothèque Python de traitement linguistique et de concordances."
+    ],
+    "workflowSteps": [
+      "Choisir un tokenizer adapté",
+      "Contrôler les sorties",
+      "Documenter les versions"
+    ],
+    "citationBibtex": "@misc{nltk,\n title={NLTK},\n howpublished={https://www.nltk.org/},\n note={Documentation officielle ; préciser la version utilisée}\n}"
+  },
+  {
+    "id": "quanteda",
+    "name": "quanteda",
+    "category": "Analyse textuelle",
+    "license": "Logiciel libre",
+    "level": "Intermédiaire",
+    "maintainer": "Projet et communauté — voir le site officiel",
+    "url": "https://quanteda.io/",
+    "summary": "Analyse quantitative de corpus et matrices documents-termes avec R.",
+    "description": "Analyse quantitative de corpus et matrices documents-termes avec R. Choisir les paramètres selon le corpus, documenter les versions et vérifier les résultats sur un échantillon de référence.",
+    "formats": [
+      "TXT",
+      "CSV",
+      "R"
+    ],
+    "useCases": [
+      "Analyse quantitative de corpus et matrices documents-termes avec R."
+    ],
+    "workflowSteps": [
+      "Définir les unités",
+      "Construire une matrice",
+      "Comparer les fréquences normalisées"
+    ],
+    "citationBibtex": "@misc{quanteda,\n title={quanteda},\n howpublished={https://quanteda.io/},\n note={Documentation officielle ; préciser la version utilisée}\n}"
+  },
+  {
+    "id": "jupyter",
+    "name": "JupyterLab",
+    "category": "Gestion & Données",
+    "license": "Logiciel libre",
+    "level": "Intermédiaire",
+    "maintainer": "Projet et communauté — voir le site officiel",
+    "url": "https://jupyter.org/",
+    "summary": "Notebooks associant code, explications et résultats pour la recherche reproductible.",
+    "description": "Notebooks associant code, explications et résultats pour la recherche reproductible. Choisir les paramètres selon le corpus, documenter les versions et vérifier les résultats sur un échantillon de référence.",
+    "formats": [
+      "IPYNB",
+      "CSV",
+      "Python"
+    ],
+    "useCases": [
+      "Notebooks associant code, explications et résultats pour la recherche reproductible."
+    ],
+    "workflowSteps": [
+      "Fixer les dépendances",
+      "Exécuter depuis zéro",
+      "Partager notebook et README"
+    ],
+    "citationBibtex": "@misc{jupyter,\n title={JupyterLab},\n howpublished={https://jupyter.org/},\n note={Documentation officielle ; préciser la version utilisée}\n}"
+  },
+  {
+    "id": "pandas",
+    "name": "pandas",
+    "category": "Gestion & Données",
+    "license": "Logiciel libre",
+    "level": "Intermédiaire",
+    "maintainer": "Projet et communauté — voir le site officiel",
+    "url": "https://pandas.pydata.org/",
+    "summary": "Manipulation et nettoyage de tableaux de données scientifiques.",
+    "description": "Manipulation et nettoyage de tableaux de données scientifiques. Choisir les paramètres selon le corpus, documenter les versions et vérifier les résultats sur un échantillon de référence.",
+    "formats": [
+      "CSV",
+      "JSON",
+      "Parquet"
+    ],
+    "useCases": [
+      "Manipulation et nettoyage de tableaux de données scientifiques."
+    ],
+    "workflowSteps": [
+      "Décrire les colonnes",
+      "Tester doublons et données manquantes",
+      "Exporter une table documentée"
+    ],
+    "citationBibtex": "@misc{pandas,\n title={pandas},\n howpublished={https://pandas.pydata.org/},\n note={Documentation officielle ; préciser la version utilisée}\n}"
+  },
+  {
+    "id": "networkx",
+    "name": "NetworkX",
+    "category": "Réseaux & SIG",
+    "license": "Logiciel libre",
+    "level": "Avancé",
+    "maintainer": "Projet et communauté — voir le site officiel",
+    "url": "https://networkx.org/",
+    "summary": "Analyse de graphes et relations entre personnes, lieux et œuvres.",
+    "description": "Analyse de graphes et relations entre personnes, lieux et œuvres. Choisir les paramètres selon le corpus, documenter les versions et vérifier les résultats sur un échantillon de référence.",
+    "formats": [
+      "GraphML",
+      "GEXF",
+      "CSV"
+    ],
+    "useCases": [
+      "Analyse de graphes et relations entre personnes, lieux et œuvres."
+    ],
+    "workflowSteps": [
+      "Définir nœuds et liens",
+      "Tester les effets des lacunes",
+      "Confronter mesures et sources"
+    ],
+    "citationBibtex": "@misc{networkx,\n title={NetworkX},\n howpublished={https://networkx.org/},\n note={Documentation officielle ; préciser la version utilisée}\n}"
+  },
+  {
+    "id": "leaflet",
+    "name": "Leaflet",
+    "category": "Réseaux & SIG",
+    "license": "Logiciel libre",
+    "level": "Intermédiaire",
+    "maintainer": "Projet et communauté — voir le site officiel",
+    "url": "https://leafletjs.com/",
+    "summary": "Publication de cartes interactives et couches géographiques.",
+    "description": "Publication de cartes interactives et couches géographiques. Choisir les paramètres selon le corpus, documenter les versions et vérifier les résultats sur un échantillon de référence.",
+    "formats": [
+      "GeoJSON",
+      "HTML",
+      "JavaScript"
+    ],
+    "useCases": [
+      "Publication de cartes interactives et couches géographiques."
+    ],
+    "workflowSteps": [
+      "Préparer les coordonnées",
+      "Créer les couches",
+      "Indiquer sources et licences"
+    ],
+    "citationBibtex": "@misc{leaflet,\n title={Leaflet},\n howpublished={https://leafletjs.com/},\n note={Documentation officielle ; préciser la version utilisée}\n}"
+  },
+  {
+    "id": "git",
+    "name": "Git",
+    "category": "Gestion & Données",
+    "license": "Logiciel libre",
+    "level": "Intermédiaire",
+    "maintainer": "Projet et communauté — voir le site officiel",
+    "url": "https://git-scm.com/",
+    "summary": "Gestion de versions des sources, scripts et documents de recherche.",
+    "description": "Gestion de versions des sources, scripts et documents de recherche. Choisir les paramètres selon le corpus, documenter les versions et vérifier les résultats sur un échantillon de référence.",
+    "formats": [
+      "TXT",
+      "XML",
+      "MD"
+    ],
+    "useCases": [
+      "Gestion de versions des sources, scripts et documents de recherche."
+    ],
+    "workflowSteps": [
+      "Créer un dépôt",
+      "Documenter les changements",
+      "Identifier la version citée"
+    ],
+    "citationBibtex": "@misc{git,\n title={Git},\n howpublished={https://git-scm.com/},\n note={Documentation officielle ; préciser la version utilisée}\n}"
+  },
+  {
+    "id": "blender",
+    "name": "Blender",
+    "category": "Édition & HTR",
+    "license": "Logiciel libre",
+    "level": "Avancé",
+    "maintainer": "Projet et communauté — voir le site officiel",
+    "url": "https://www.blender.org/",
+    "summary": "Traitement et présentation des modèles 3D patrimoniaux.",
+    "description": "Traitement et présentation des modèles 3D patrimoniaux. Choisir les paramètres selon le corpus, documenter les versions et vérifier les résultats sur un échantillon de référence.",
+    "formats": [
+      "OBJ",
+      "PLY",
+      "glTF"
+    ],
+    "useCases": [
+      "Traitement et présentation des modèles 3D patrimoniaux."
+    ],
+    "workflowSteps": [
+      "Importer le maillage",
+      "Documenter les transformations",
+      "Distinguer mesure et restitution"
+    ],
+    "citationBibtex": "@misc{blender,\n title={Blender},\n howpublished={https://www.blender.org/},\n note={Documentation officielle ; préciser la version utilisée}\n}"
+  },
 ];
 
 export const CORPORA: CorpusItem[] = [
@@ -983,6 +1282,126 @@ export const CORPORA: CorpusItem[] = [
       'Modèle historique de bibliothèque philologique numérique articulant éditions critiques, dictionnaires de référence, traductions alignées et identifiants canoniques CTS.',
     apiOrStandard: 'XML-TEI EpiDoc / CTS URN',
     url: 'https://www.perseus.tufts.edu/',
+  },
+  {
+    "id": "bnrm",
+    "name": "Bibliothèque nationale du Royaume du Maroc",
+    "institution": "BNRM",
+    "scope": "Maroc · patrimoine écrit",
+    "access": "Selon les fonds",
+    "description": "Manuscrits, lithographies, journaux et livres rares. Relever cotes, droits et provenance.",
+    "apiOrStandard": "Catalogue et fonds numérisés",
+    "url": "https://www.bnrm.ma/"
+  },
+  {
+    "id": "openiti",
+    "name": "OpenITI",
+    "institution": "Open Islamicate Texts Initiative",
+    "scope": "Textes arabes et persans",
+    "access": "Conditions selon version",
+    "description": "Corpus exploitable par programme ; vérifier transcriptions, métadonnées et éditions sources.",
+    "apiOrStandard": "Texte balisé, Git, Zenodo",
+    "url": "https://openiti.org/documentation/"
+  },
+  {
+    "id": "qdl",
+    "name": "Qatar Digital Library",
+    "institution": "QNL et British Library",
+    "scope": "Golfe et Moyen-Orient",
+    "access": "Consultation en ligne",
+    "description": "Archives, cartes et manuscrits relatifs à la région ; contrôler provenance et droits.",
+    "apiOrStandard": "Notices et images",
+    "url": "https://www.qdl.qa/en"
+  },
+  {
+    "id": "dlme",
+    "name": "Digital Library of the Middle East",
+    "institution": "Stanford Libraries et partenaires",
+    "scope": "Moyen-Orient et Afrique du Nord",
+    "access": "Droits par objet",
+    "description": "Agrégateur de ressources patrimoniales ; consulter les notices originales.",
+    "apiOrStandard": "Métadonnées agrégées",
+    "url": "https://dlmenetwork.org/"
+  },
+  {
+    "id": "qalamos",
+    "name": "Qalamos",
+    "institution": "Staatsbibliothek zu Berlin et partenaires",
+    "scope": "Manuscrits orientaux",
+    "access": "Selon les collections",
+    "description": "Portail de manuscrits d’Asie et d’Afrique, utile pour identifier les témoins et cotes.",
+    "apiOrStandard": "Notices et reproductions",
+    "url": "https://www.qalamos.net/"
+  },
+  {
+    "id": "loc",
+    "name": "Library of Congress Digital Collections",
+    "institution": "Library of Congress",
+    "scope": "Collections internationales",
+    "access": "Droits par objet",
+    "description": "Documents, cartes, photographies et enregistrements ; distinguer notices et fichiers.",
+    "apiOrStandard": "API JSON",
+    "url": "https://www.loc.gov/collections/"
+  },
+  {
+    "id": "dpla",
+    "name": "Digital Public Library of America",
+    "institution": "DPLA et partenaires",
+    "scope": "États-Unis",
+    "access": "Droits variables",
+    "description": "Recherche fédérée dans les collections de bibliothèques, archives et musées.",
+    "apiOrStandard": "Métadonnées agrégées",
+    "url": "https://dp.la/"
+  },
+  {
+    "id": "internet-archive",
+    "name": "Internet Archive",
+    "institution": "Internet Archive",
+    "scope": "International · documents et Web",
+    "access": "Accès variable",
+    "description": "Livres numérisés, médias et archives de sites ; identifier version et droits.",
+    "apiOrStandard": "Métadonnées et fichiers",
+    "url": "https://archive.org/"
+  },
+  {
+    "id": "clarin-vlo",
+    "name": "Virtual Language Observatory",
+    "institution": "CLARIN ERIC",
+    "scope": "Ressources linguistiques",
+    "access": "Accès variable",
+    "description": "Moteur de découverte de corpus et outils linguistiques.",
+    "apiOrStandard": "CMDI et liens",
+    "url": "https://vlo.clarin.eu/"
+  },
+  {
+    "id": "zenodo",
+    "name": "Zenodo",
+    "institution": "CERN et OpenAIRE",
+    "scope": "Données scientifiques",
+    "access": "Selon le dépôt",
+    "description": "Entrepôt de données, code et documents ; contrôler licence et version.",
+    "apiOrStandard": "DOI, API REST",
+    "url": "https://zenodo.org/"
+  },
+  {
+    "id": "wikidata-corpus",
+    "name": "Wikidata",
+    "institution": "Wikimedia et communauté",
+    "scope": "Données liées",
+    "access": "Données structurées CC0",
+    "description": "Référentiel d’identifiants et relations ; vérifier les sources et biais de couverture.",
+    "apiOrStandard": "RDF, SPARQL",
+    "url": "https://www.wikidata.org/"
+  },
+  {
+    "id": "data-bnf",
+    "name": "data.bnf.fr",
+    "institution": "Bibliothèque nationale de France",
+    "scope": "Autorités et œuvres",
+    "access": "Conditions du service",
+    "description": "Relier auteurs, œuvres et notices pour l’alignement d’entités.",
+    "apiOrStandard": "RDF, SPARQL",
+    "url": "https://data.bnf.fr/"
   },
 ];
 
@@ -1083,6 +1502,94 @@ ex:impression_lyon a crm:E12_Production ;
 │   └── corpus.odd         # Documentation et schéma RelaxNG
 └── scripts/
     └── analyse_reseau.R   # Script reproductible documenté`,
+  },
+  {
+    "id": "dublin-core",
+    "name": "Dublin Core Metadata Terms",
+    "acronym": "DCMI",
+    "domain": "Métadonnées",
+    "summary": "Vocabulaire de description de ressources.",
+    "whyItMatters": "Faciliter les échanges et le moissonnage.",
+    "snippetLabel": "Turtle",
+    "snippet": "@prefix dct: <http://purl.org/dc/terms/> .\n<https://example.org/1> dct:title \"Manuscrit\"@fr .",
+    "url": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/"
+  },
+  {
+    "id": "rdf-standard",
+    "name": "RDF et SPARQL",
+    "acronym": "RDF",
+    "domain": "Données liées",
+    "summary": "Modèle de triplets et langage de requête.",
+    "whyItMatters": "Relier et interroger les ressources.",
+    "snippetLabel": "SPARQL",
+    "snippet": "PREFIX dct: <http://purl.org/dc/terms/>\nSELECT ?s ?titre WHERE { ?s dct:title ?titre } LIMIT 10",
+    "url": "https://www.w3.org/TR/rdf11-concepts/"
+  },
+  {
+    "id": "skos-standard",
+    "name": "Simple Knowledge Organization System",
+    "acronym": "SKOS",
+    "domain": "Thésaurus",
+    "summary": "Vocabulaire RDF de systèmes d’organisation des connaissances.",
+    "whyItMatters": "Décrire concepts et libellés multilingues.",
+    "snippetLabel": "Turtle",
+    "snippet": "@prefix skos: <http://www.w3.org/2004/02/skos/core#> .\n<https://example.org/c1> a skos:Concept ; skos:prefLabel \"Manuscrit\"@fr .",
+    "url": "https://www.w3.org/TR/skos-reference/"
+  },
+  {
+    "id": "web-annotation",
+    "name": "Web Annotation Data Model",
+    "acronym": "W3C OA",
+    "domain": "Annotation",
+    "summary": "Associer un contenu à une cible documentaire.",
+    "whyItMatters": "Rattacher une annotation à une source.",
+    "snippetLabel": "JSON-LD",
+    "snippet": "{\n  \"@context\": \"http://www.w3.org/ns/anno.jsonld\",\n  \"id\": \"https://example.org/a1\",\n  \"type\": \"Annotation\",\n  \"body\": {\n    \"type\": \"TextualBody\",\n    \"value\": \"Lecture incertaine\"\n  },\n  \"target\": \"https://example.org/p1\"\n}",
+    "url": "https://www.w3.org/TR/annotation-model/"
+  },
+  {
+    "id": "prov",
+    "name": "PROV-O",
+    "acronym": "PROV",
+    "domain": "Traçabilité",
+    "summary": "Ontologie d’entités, activités et agents.",
+    "whyItMatters": "Consigner l’origine et le traitement d’un fichier.",
+    "snippetLabel": "Turtle",
+    "snippet": "@prefix prov: <http://www.w3.org/ns/prov#> .\n<https://example.org/texte> prov:wasDerivedFrom <https://example.org/image> .",
+    "url": "https://www.w3.org/TR/prov-o/"
+  },
+  {
+    "id": "ro-crate",
+    "name": "Research Object Crate",
+    "acronym": "RO-Crate",
+    "domain": "Reproductibilité",
+    "summary": "Description de données et métadonnées dans un paquet JSON-LD.",
+    "whyItMatters": "Associer corpus, code et documentation.",
+    "snippetLabel": "Fragment JSON-LD",
+    "snippet": "{\n  \"@graph\": [\n    {\n      \"@id\": \"./\",\n      \"@type\": \"Dataset\",\n      \"name\": \"Corpus\",\n      \"hasPart\": {\n        \"@id\": \"corpus.csv\"\n      }\n    },\n    {\n      \"@id\": \"corpus.csv\",\n      \"@type\": \"File\"\n    }\n  ]\n}",
+    "url": "https://www.researchobject.org/ro-crate/specification"
+  },
+  {
+    "id": "geojson",
+    "name": "GeoJSON",
+    "acronym": "RFC 7946",
+    "domain": "Cartographie",
+    "summary": "Format JSON de données géographiques.",
+    "whyItMatters": "Échanger des géométries ; ordre longitude, latitude.",
+    "snippetLabel": "Exemple Point",
+    "snippet": "{\n  \"type\": \"Feature\",\n  \"geometry\": {\n    \"type\": \"Point\",\n    \"coordinates\": [\n      -6.84,\n      34.02\n    ]\n  },\n  \"properties\": {\n    \"name\": \"Rabat (exemple)\"\n  }\n}",
+    "url": "https://www.rfc-editor.org/rfc/rfc7946"
+  },
+  {
+    "id": "alto",
+    "name": "ALTO XML",
+    "acronym": "ALTO",
+    "domain": "OCR et mise en page",
+    "summary": "Format XML du texte reconnu et de sa position sur la page.",
+    "whyItMatters": "Relier image, lignes et mots.",
+    "snippetLabel": "Fragment XML",
+    "snippet": "<TextLine ID=\"l1\">\n <String CONTENT=\"Exemple\" HPOS=\"100\" VPOS=\"200\" WIDTH=\"80\" HEIGHT=\"20\"/>\n</TextLine>",
+    "url": "https://www.loc.gov/standards/alto/"
   },
 ];
 
@@ -1195,6 +1702,314 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       'Dispositif éditorial encodant les variantes entre témoins manuscrits ou imprimés, permettant au lecteur de comparer dynamiquement les états du texte et les notes philologiques.',
     related: ['XML-TEI'],
   },
+  {
+    "id": "ocr",
+    "term": "OCR",
+    "english": "Optical character recognition",
+    "category": "Acquisition",
+    "definition": "Reconnaissance de caractères à partir d’images ; contrôler la qualité sur des pages représentatives.",
+    "related": [
+      "HTR",
+      "CER"
+    ]
+  },
+  {
+    "id": "cer",
+    "term": "CER",
+    "english": "Character error rate",
+    "category": "Acquisition",
+    "definition": "Rapport des insertions, suppressions et substitutions de caractères à la longueur de la référence ; peut dépasser 100 %.",
+    "related": [
+      "OCR",
+      "WER"
+    ]
+  },
+  {
+    "id": "wer",
+    "term": "WER",
+    "english": "Word error rate",
+    "category": "Acquisition",
+    "definition": "Taux d’erreur sur les mots, sensible aux règles de segmentation.",
+    "related": [
+      "CER",
+      "Tokenisation"
+    ]
+  },
+  {
+    "id": "tokenisation",
+    "term": "Tokenisation",
+    "english": "Tokenization",
+    "category": "TAL",
+    "definition": "Découpage d’un texte en unités de traitement, adaptées à la langue et à l’objectif.",
+    "related": [
+      "Lemmatisation",
+      "Normalisation"
+    ]
+  },
+  {
+    "id": "normalisation",
+    "term": "Normalisation",
+    "english": "Normalization",
+    "category": "TAL",
+    "definition": "Transformation vers une convention explicite ; conserver les formes originales.",
+    "related": [
+      "Unicode",
+      "Tokenisation"
+    ]
+  },
+  {
+    "id": "concordance",
+    "term": "Concordance",
+    "english": "Concordance / KWIC",
+    "category": "Analyse",
+    "definition": "Occurrences d’un terme dans leur contexte, reliant statistiques et usages.",
+    "related": [
+      "Lecture distante",
+      "Cooccurrence"
+    ]
+  },
+  {
+    "id": "cooccurrence",
+    "term": "Cooccurrence",
+    "english": "Co-occurrence",
+    "category": "Analyse",
+    "definition": "Présence conjointe de deux unités dans une fenêtre définie.",
+    "related": [
+      "Concordance",
+      "Textométrie"
+    ]
+  },
+  {
+    "id": "tfidf",
+    "term": "TF-IDF",
+    "english": "Term frequency–inverse document frequency",
+    "category": "Analyse",
+    "definition": "Pondération valorisant les termes fréquents dans un document mais rares dans l’ensemble.",
+    "related": [
+      "Textométrie",
+      "Classification"
+    ]
+  },
+  {
+    "id": "topic-model",
+    "term": "Modélisation thématique",
+    "english": "Topic modelling",
+    "category": "Analyse",
+    "definition": "Recherche de structures lexicales latentes ; les thèmes demandent interprétation et validation.",
+    "related": [
+      "Lecture distante",
+      "TF-IDF"
+    ]
+  },
+  {
+    "id": "embedding",
+    "term": "Plongement vectoriel",
+    "english": "Embedding",
+    "category": "TAL",
+    "definition": "Représentation numérique apprise d’un mot, passage ou image ; proximité n’est pas équivalence.",
+    "related": [
+      "TAL",
+      "RAG"
+    ]
+  },
+  {
+    "id": "rag",
+    "term": "RAG",
+    "english": "Retrieval-augmented generation",
+    "category": "TAL",
+    "definition": "Génération enrichie de documents retrouvés ; vérifier les résultats dans les passages sources.",
+    "related": [
+      "Plongement vectoriel",
+      "Hallucination"
+    ]
+  },
+  {
+    "id": "hallucination",
+    "term": "Hallucination d’un modèle",
+    "english": "Model hallucination",
+    "category": "Épistémologie",
+    "definition": "Production plausible mais fausse ou non étayée, notamment une référence inexistante.",
+    "related": [
+      "RAG",
+      "Validation humaine"
+    ]
+  },
+  {
+    "id": "biais",
+    "term": "Biais de corpus",
+    "english": "Corpus bias",
+    "category": "Épistémologie",
+    "definition": "Distorsion liée à la sélection, conservation, numérisation ou collecte des documents.",
+    "related": [
+      "Provenance",
+      "Représentativité"
+    ]
+  },
+  {
+    "id": "provenance",
+    "term": "Provenance",
+    "english": "Provenance",
+    "category": "Gouvernance",
+    "definition": "Historique de l’origine, des transformations et des agents associés aux données.",
+    "related": [
+      "Métadonnées",
+      "PROV"
+    ]
+  },
+  {
+    "id": "metadata",
+    "term": "Métadonnées",
+    "english": "Metadata",
+    "category": "Standards",
+    "definition": "Informations descriptives, structurelles ou administratives associées à une ressource.",
+    "related": [
+      "Dublin Core",
+      "FAIR"
+    ]
+  },
+  {
+    "id": "doi",
+    "term": "DOI",
+    "english": "Digital object identifier",
+    "category": "Standards",
+    "definition": "Identifiant persistant d’un objet numérique ; ne garantit ni libre accès ni qualité.",
+    "related": [
+      "ORCID",
+      "FAIR"
+    ]
+  },
+  {
+    "id": "orcid",
+    "term": "ORCID",
+    "english": "Open researcher and contributor ID",
+    "category": "Standards",
+    "definition": "Identifiant de contributeur scientifique distinguant des homonymes.",
+    "related": [
+      "DOI",
+      "Autorité"
+    ]
+  },
+  {
+    "id": "rdf",
+    "term": "RDF",
+    "english": "Resource description framework",
+    "category": "Standards",
+    "definition": "Modèle de graphes fondé sur des triplets sujet, prédicat, objet.",
+    "related": [
+      "SPARQL",
+      "LOD"
+    ]
+  },
+  {
+    "id": "sparql",
+    "term": "SPARQL",
+    "english": "SPARQL protocol and RDF query language",
+    "category": "Standards",
+    "definition": "Langage de requêtes sur les graphes RDF.",
+    "related": [
+      "RDF",
+      "CIDOC CRM"
+    ]
+  },
+  {
+    "id": "skos",
+    "term": "SKOS",
+    "english": "Simple knowledge organization system",
+    "category": "Standards",
+    "definition": "Vocabulaire RDF pour concepts, libellés et relations de thésaurus.",
+    "related": [
+      "RDF",
+      "Ontologie"
+    ]
+  },
+  {
+    "id": "ontologie",
+    "term": "Ontologie",
+    "english": "Ontology",
+    "category": "Standards",
+    "definition": "Modèle explicite des classes, propriétés et relations d’un domaine.",
+    "related": [
+      "RDF",
+      "CIDOC CRM"
+    ]
+  },
+  {
+    "id": "alignement",
+    "term": "Alignement d’entités",
+    "english": "Entity reconciliation",
+    "category": "Gestion",
+    "definition": "Association de notices locales à des identifiants d’autorité ; conserver les cas incertains.",
+    "related": [
+      "Wikidata",
+      "Autorité"
+    ]
+  },
+  {
+    "id": "georeferencement",
+    "term": "Géoréférencement",
+    "english": "Georeferencing",
+    "category": "Histoire & Réseaux",
+    "definition": "Associer une carte à un système de coordonnées, mesurer les incertitudes.",
+    "related": [
+      "SIG",
+      "GeoJSON"
+    ]
+  },
+  {
+    "id": "sig",
+    "term": "SIG",
+    "english": "Geographic information system",
+    "category": "Histoire & Réseaux",
+    "definition": "Système de gestion, analyse et représentation de données spatialisées.",
+    "related": [
+      "Géoréférencement",
+      "Cartographie"
+    ]
+  },
+  {
+    "id": "graphe",
+    "term": "Graphe",
+    "english": "Graph",
+    "category": "Histoire & Réseaux",
+    "definition": "Modèle de nœuds et liens ; centralités et communautés dépendent des règles de construction.",
+    "related": [
+      "Prosopographie",
+      "Centralité"
+    ]
+  },
+  {
+    "id": "unicode",
+    "term": "Unicode",
+    "english": "Unicode",
+    "category": "Encodage",
+    "definition": "Standard des caractères ; UTF-8 est une forme d’encodage.",
+    "related": [
+      "Tokenisation",
+      "TEI"
+    ]
+  },
+  {
+    "id": "reproductibilite",
+    "term": "Reproductibilité",
+    "english": "Reproducibility",
+    "category": "Gouvernance",
+    "definition": "Possibilité de retrouver des résultats à partir des données, versions et procédures documentées.",
+    "related": [
+      "FAIR",
+      "Provenance"
+    ]
+  },
+  {
+    "id": "dmp",
+    "term": "Plan de gestion des données",
+    "english": "Data management plan",
+    "category": "Gouvernance",
+    "definition": "Document évolutif décrivant collecte, stockage, droits, partage et conservation.",
+    "related": [
+      "FAIR",
+      "Reproductibilité"
+    ]
+  },
 ];
 
 export const BIBLIOGRAPHY: BibEntry[] = [
@@ -1293,6 +2108,94 @@ export const BIBLIOGRAPHY: BibEntry[] = [
       'Guide clair et rigoureux en français présentant la philosophie, la syntaxe et les choix de modélisation de la TEI P5 pour les chercheurs en SHS.',
     iso690: 'BURNARD, Lou. Qu’est-ce que la Text Encoding Initiative ? Traduit par Marjorie Burghart. Marseille : OpenEdition Press, 2015.',
     bibtex: `@book{burnard2015tei,\n  author = {Burnard, Lou},\n  translator = {Burghart, Marjorie},\n  title = {Qu'est-ce que la Text Encoding Initiative ?},\n  year = {2015},\n  publisher = {OpenEdition Press},\n  address = {Marseille}\n}`,
+  },
+  {
+    "id": "wilkinson-fair-2016",
+    "authors": "Wilkinson, Mark D. et al.",
+    "year": 2016,
+    "title": "The FAIR Guiding Principles for scientific data management and stewardship",
+    "publisher": "Scientific Data, 3, 160018",
+    "theme": "Méthodes",
+    "abstract": "Texte fondateur des principes FAIR.",
+    "iso690": "Wilkinson, Mark D. et al.. The FAIR Guiding Principles for scientific data management and stewardship. Scientific Data, 3, 160018, 2016. DOI : 10.1038/sdata.2016.18",
+    "bibtex": "@article{wilkinson-fair-2016,\n author={Wilkinson, Mark D. et al.},\n title={The FAIR Guiding Principles for scientific data management and stewardship},\n year={2016},\n journal={Scientific Data, 3, 160018},\n doi={10.1038/sdata.2016.18}\n}"
+  },
+  {
+    "id": "borgman-2007",
+    "authors": "Borgman, Christine L.",
+    "year": 2007,
+    "title": "Scholarship in the Digital Age: Information, Infrastructure, and the Internet",
+    "publisher": "MIT Press",
+    "theme": "Fondements",
+    "abstract": "Infrastructures et conditions de production du savoir numérique.",
+    "iso690": "Borgman, Christine L.. Scholarship in the Digital Age: Information, Infrastructure, and the Internet. MIT Press, 2007.",
+    "bibtex": "@book{borgman-2007,\n author={Borgman, Christine L.},\n title={Scholarship in the Digital Age: Information, Infrastructure, and the Internet},\n year={2007},\n publisher={MIT Press}\n}"
+  },
+  {
+    "id": "schreibman-2004",
+    "authors": "Schreibman, Susan ; Siemens, Ray ; Unsworth, John (dir.)",
+    "year": 2004,
+    "title": "A Companion to Digital Humanities",
+    "publisher": "Blackwell",
+    "theme": "Fondements",
+    "abstract": "Panorama historique et méthodologique de la discipline.",
+    "iso690": "Schreibman, Susan ; Siemens, Ray ; Unsworth, John (dir.). A Companion to Digital Humanities. Blackwell, 2004.",
+    "bibtex": "@book{schreibman-2004,\n author={Schreibman, Susan and Siemens, Ray and Unsworth, John (dir.)},\n title={A Companion to Digital Humanities},\n year={2004},\n publisher={Blackwell}\n}"
+  },
+  {
+    "id": "drucker-2014",
+    "authors": "Drucker, Johanna",
+    "year": 2014,
+    "title": "Graphesis: Visual Forms of Knowledge Production",
+    "publisher": "Harvard University Press",
+    "theme": "Épistémologie",
+    "abstract": "Critique des conventions de représentation visuelle.",
+    "iso690": "Drucker, Johanna. Graphesis: Visual Forms of Knowledge Production. Harvard University Press, 2014.",
+    "bibtex": "@book{drucker-2014,\n author={Drucker, Johanna},\n title={Graphesis: Visual Forms of Knowledge Production},\n year={2014},\n publisher={Harvard University Press}\n}"
+  },
+  {
+    "id": "underwood-2019",
+    "authors": "Underwood, Ted",
+    "year": 2019,
+    "title": "Distant Horizons: Digital Evidence and Literary Change",
+    "publisher": "University of Chicago Press",
+    "theme": "Méthodes",
+    "abstract": "Analyse quantitative de transformations littéraires.",
+    "iso690": "Underwood, Ted. Distant Horizons: Digital Evidence and Literary Change. University of Chicago Press, 2019.",
+    "bibtex": "@book{underwood-2019,\n author={Underwood, Ted},\n title={Distant Horizons: Digital Evidence and Literary Change},\n year={2019},\n publisher={University of Chicago Press}\n}"
+  },
+  {
+    "id": "jockers-2013",
+    "authors": "Jockers, Matthew L.",
+    "year": 2013,
+    "title": "Macroanalysis: Digital Methods and Literary History",
+    "publisher": "University of Illinois Press",
+    "theme": "Méthodes",
+    "abstract": "Historie littéraire computationnelle à grande échelle.",
+    "iso690": "Jockers, Matthew L.. Macroanalysis: Digital Methods and Literary History. University of Illinois Press, 2013.",
+    "bibtex": "@book{jockers-2013,\n author={Jockers, Matthew L.},\n title={Macroanalysis: Digital Methods and Literary History},\n year={2013},\n publisher={University of Illinois Press}\n}"
+  },
+  {
+    "id": "risam-2018",
+    "authors": "Risam, Roopika",
+    "year": 2018,
+    "title": "New Digital Worlds: Postcolonial Digital Humanities in Theory, Praxis, and Pedagogy",
+    "publisher": "Northwestern University Press",
+    "theme": "Épistémologie",
+    "abstract": "Perspectives postcoloniales sur les pratiques numériques.",
+    "iso690": "Risam, Roopika. New Digital Worlds: Postcolonial Digital Humanities in Theory, Praxis, and Pedagogy. Northwestern University Press, 2018.",
+    "bibtex": "@book{risam-2018,\n author={Risam, Roopika},\n title={New Digital Worlds: Postcolonial Digital Humanities in Theory, Praxis, and Pedagogy},\n year={2018},\n publisher={Northwestern University Press}\n}"
+  },
+  {
+    "id": "deegan-2012",
+    "authors": "Deegan, Marilyn ; McCarty, Willard (dir.)",
+    "year": 2012,
+    "title": "Collaborative Research in the Digital Humanities",
+    "publisher": "Ashgate",
+    "theme": "Fondements",
+    "abstract": "Collaboration et division du travail scientifique.",
+    "iso690": "Deegan, Marilyn ; McCarty, Willard (dir.). Collaborative Research in the Digital Humanities. Ashgate, 2012.",
+    "bibtex": "@book{deegan-2012,\n author={Deegan, Marilyn and McCarty, Willard (dir.)},\n title={Collaborative Research in the Digital Humanities},\n year={2012},\n publisher={Ashgate}\n}"
   },
 ];
 
@@ -1436,5 +2339,95 @@ export const ECOSYSTEM_ITEMS: EcosystemItem[] = [
     description:
       'Réseau de consortiums thématiques produisant guides méthodologiques, référentiels et formations dédiées aux corpus d’auteurs, aux analyses textuelles, à la 3D et à l’archéologie.',
     url: 'https://www.huma-num.fr/les-consortiums-hn/',
+  },
+  {
+    "id": "dariah-campus",
+    "name": "DARIAH-Campus",
+    "type": "Formations",
+    "location": "Europe / en ligne",
+    "accessNote": "Ressources en ligne",
+    "description": "Cours, vidéos, exercices pour les compétences numériques en SHS.",
+    "url": "https://campus.dariah.eu/resources"
+  },
+  {
+    "id": "clarin",
+    "name": "CLARIN ERIC",
+    "type": "Infrastructures",
+    "location": "Europe",
+    "accessNote": "Selon service",
+    "description": "Infrastructure pour les ressources et outils linguistiques.",
+    "url": "https://www.clarin.eu/"
+  },
+  {
+    "id": "adho",
+    "name": "Alliance of Digital Humanities Organizations",
+    "type": "Réseaux & Veille",
+    "location": "International",
+    "accessNote": "Site public",
+    "description": "Coordination d’associations de la discipline.",
+    "url": "https://adho.org/"
+  },
+  {
+    "id": "eadh",
+    "name": "European Association for Digital Humanities",
+    "type": "Réseaux & Veille",
+    "location": "Europe",
+    "accessNote": "Site public",
+    "description": "Communauté scientifique et méthodes numériques.",
+    "url": "https://eadh.org/"
+  },
+  {
+    "id": "dhsi",
+    "name": "Digital Humanities Summer Institute",
+    "type": "Formations",
+    "location": "Canada",
+    "accessNote": "Selon édition",
+    "description": "École de formation aux pratiques numériques.",
+    "url": "https://dhsi.org/"
+  },
+  {
+    "id": "dh-benelux",
+    "name": "DH Benelux Journal",
+    "type": "Revues",
+    "location": "Benelux",
+    "accessNote": "Selon revue",
+    "description": "Travaux sur les méthodes, infrastructures et résultats.",
+    "url": "https://journal.dhbenelux.org/"
+  },
+  {
+    "id": "journal-dh",
+    "name": "Journal of Digital Humanities",
+    "type": "Revues",
+    "location": "International",
+    "accessNote": "Archives en ligne",
+    "description": "Archives de réflexion méthodologique sur les pratiques numériques.",
+    "url": "https://journalofdigitalhumanities.org/"
+  },
+  {
+    "id": "software-heritage",
+    "name": "Software Heritage",
+    "type": "Infrastructures",
+    "location": "International",
+    "accessNote": "Archive publique",
+    "description": "Archivage et identification pérenne du code source public.",
+    "url": "https://www.softwareheritage.org/"
+  },
+  {
+    "id": "datacite",
+    "name": "DataCite",
+    "type": "Infrastructures",
+    "location": "International",
+    "accessNote": "Documentation publique",
+    "description": "Identification et métadonnées des résultats de recherche.",
+    "url": "https://datacite.org/"
+  },
+  {
+    "id": "carpentries",
+    "name": "The Carpentries",
+    "type": "Formations",
+    "location": "International",
+    "accessNote": "Supports ouverts",
+    "description": "Cours pratiques de programmation et gestion des données.",
+    "url": "https://carpentries.org/"
   },
 ];

@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import {ResearchGuides} from './components/ResearchGuides';
 import {currentPage} from './data/pages';
 import {PageOverview, PageIntro} from './components/PageOverview';
 import {CorporaStandardsSection} from './components/CorporaStandardsSection';
@@ -158,6 +159,7 @@ export default function App() {
           {(page.id==='corpus'||page.id==='standards') && <CorporaStandardsSection mode={page.id} isSaved={isSaved} onToggleSaveCorpus={handleToggleSaveCorpus}/>}
           {(page.id==='glossaire'||page.id==='bibliographie') && <MethodsGlossarySection mode={page.id} isSaved={isSaved} onToggleSaveBib={handleToggleSaveBib}/>}
           {page.id==='ecosysteme' && <EcosystemSection/>}
+          {(page.id==='disciplines'||page.id==='ia'||page.id==='formations'||page.id==='mondes') && <ResearchGuides page={page.id}/>}
         </>}
       </main>
 
