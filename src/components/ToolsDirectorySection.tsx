@@ -58,6 +58,8 @@ export function ToolsDirectorySection({
         tool.name.toLowerCase().includes(q) ||
         tool.summary.toLowerCase().includes(q) ||
         tool.maintainer.toLowerCase().includes(q) ||
+        tool.description.toLowerCase().includes(q) ||
+        tool.useCases.some(v=>v.toLowerCase().includes(q)) ||
         tool.formats.some((fmt) => fmt.toLowerCase().includes(q))
       );
     });

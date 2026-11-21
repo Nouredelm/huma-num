@@ -1,7 +1,7 @@
 import {useMemo,useState} from 'react';
 import {Search,BookOpen,CheckCircle,AlertCircle,ExternalLink,Workflow} from 'lucide-react';
 import {GUIDES} from '../data/researchGuides';
-export function ResearchGuides({page}:{page:'disciplines'|'ia'|'formations'|'mondes'}) {
+export function ResearchGuides({page}:{page:'disciplines'|'ia'|'formations'|'mondes'|'science-ouverte'|'arabes'}) {
  const [query,setQuery]=useState('');const [expanded,setExpanded]=useState<string[]>([]);
  const all=GUIDES.filter(g=>g.page===page);const norm=(s:string)=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
  const results=useMemo(()=>GUIDES.filter(g=>g.page===page&&norm([g.title,g.question,g.method,g.resources,g.caution].join(' ')).includes(norm(query.trim()))),[page,query]);

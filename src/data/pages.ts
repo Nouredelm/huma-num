@@ -1,4 +1,4 @@
-import {Home, Compass, Wrench, Database, FileCode, BookOpen, Library, Network, Shapes, Brain, GraduationCap, Globe, FlaskConical, Share2, Search, FolderOpen, BookMarked, PlayCircle, Rss, Columns3} from 'lucide-react';
+import {Home, Compass, Wrench, Database, FileCode, BookOpen, Library, Network, Shapes, Brain, GraduationCap, Globe, FlaskConical, Share2, Search, FolderOpen, BookMarked, PlayCircle, Rss, Columns3, ClipboardList, Unlock, Languages, ChartNoAxesCombined} from 'lucide-react';
 import {GENERATED_IMAGES} from './humnumData';
 export const PAGES = [
   {id:'accueil', href:'/', title:'Accueil', label:'Accueil', icon:Home, description:'Portail des humanités numériques', image:GENERATED_IMAGES.heroArchive},
@@ -21,6 +21,10 @@ export const PAGES = [
   {id:'mediatheque',href:'/mediatheque',title:"Médiathèque",label:"Médiathèque",icon:PlayCircle,description:"Conférences, vidéos et formations audiovisuelles pour approfondir les méthodes.",image:null},
   {id:'veille',href:'/veille',title:"Veille scientifique",label:"Veille scientifique",icon:Rss,description:"Suivre les publications, appels et événements à partir de sources institutionnelles.",image:null},
   {id:'comparateur',href:'/comparateur',title:"Comparateur d’outils",label:"Comparateur d’outils",icon:Columns3,description:"Comparer les logiciels du répertoire selon les usages, formats, licences et niveaux.",image:null},
+  {id:'chercheur',href:'/chercheur',title:"Espace chercheur",label:"Espace chercheur",icon:ClipboardList,description:"Élaborer un protocole scientifique, documenter ses données et exporter une fiche de projet.",image:null},
+  {id:'science-ouverte',href:'/science-ouverte',title:"Science ouverte",label:"Science ouverte",icon:Unlock,description:"Droits, éthique, gestion des données, reproductibilité et diffusion scientifique.",image:null},
+  {id:'arabes',href:'/arabes',title:"Humanités numériques arabes",label:"Humanités numériques arabes",icon:Languages,description:"Explorer les corpus, outils et méthodes pour les textes arabes, le Maghreb et les écritures historiques.",image:null},
+  {id:'ateliers',href:'/ateliers',title:"Laboratoire avancé",label:"Laboratoire avancé",icon:ChartNoAxesCombined,description:"Comparer deux corpus, calculer les cooccurrences, construire un réseau et inspecter des métadonnées.",image:null},
 ] as const;
 export type PageId = typeof PAGES[number]['id'];
 export function currentPage() {

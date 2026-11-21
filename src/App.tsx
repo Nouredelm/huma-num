@@ -5,6 +5,8 @@ import {GlobalSearch} from './components/GlobalSearch';
 import {EditorialResources} from './components/EditorialResources';
 import {ToolCompare} from './components/ToolCompare';
 import {ScientificWatch} from './components/ScientificWatch';
+import {ResearchStudio} from './components/ResearchStudio';
+import {AdvancedLab} from './components/AdvancedLab';
 import {ResearchGuides} from './components/ResearchGuides';
 import {currentPage} from './data/pages';
 import {PageOverview, PageIntro} from './components/PageOverview';
@@ -172,7 +174,9 @@ export default function App() {
           {(page.id==='cas'||page.id==='bibliotheque'||page.id==='mediatheque') && <EditorialResources page={page.id}/>}
           {page.id==='comparateur' && <ToolCompare/>}
           {page.id==='veille' && <ScientificWatch/>}
-          {(page.id==='disciplines'||page.id==='ia'||page.id==='formations'||page.id==='mondes') && <ResearchGuides page={page.id}/>}
+          {page.id==='chercheur' && <ResearchStudio/>}
+          {page.id==='ateliers' && <AdvancedLab/>}
+          {(page.id==='disciplines'||page.id==='ia'||page.id==='formations'||page.id==='mondes'||page.id==='science-ouverte'||page.id==='arabes') && <ResearchGuides page={page.id}/>}
         </>}
       </main>
 
