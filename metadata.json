@@ -1,0 +1,6 @@
+{
+  "name": "HumNum — Portail des Humanités Numériques",
+  "description": "Portail francophone de référence pour les humanités numériques : méthodes computationnelles, boîte à outils curatée, corpus ouverts, standards (TEI, IIIF, FAIR), glossaire critique et bibliographie scientifique.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
