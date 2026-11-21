@@ -1,4 +1,7 @@
 import {useEffect, useState} from 'react';
+import {Laboratory} from './components/Laboratory';
+import {KnowledgeMap} from './components/KnowledgeMap';
+import {GlobalSearch} from './components/GlobalSearch';
 import {ResearchGuides} from './components/ResearchGuides';
 import {currentPage} from './data/pages';
 import {PageOverview, PageIntro} from './components/PageOverview';
@@ -30,6 +33,7 @@ const STORAGE_THEME_KEY = 'humnum_theme_v1';
 export default function App() {
   const page = currentPage();
   useEffect(()=>{if(page.id==='accueil'){const legacy:Record<string,string>={panorama:'/panorama',outils:'/outils',corpus:'/corpus',methodes:'/glossaire',ecosysteme:'/ecosysteme'}; const target=legacy[location.hash.slice(1)]; if(target) location.replace(target);}},[page.id]);
+  useEffect(()=>{if(page.id==='accueil'||!location.hash)return;const id=location.hash.slice(1);const timer=window.setTimeout(()=>document.getElementById(id)?.scrollIntoView({block:'start'}),120);return()=>window.clearTimeout(timer);},[page.id]);
   const [selectedTool, setSelectedTool] = useState<DhTool | null>(null);
   const [selectionDrawerOpen, setSelectionDrawerOpen] = useState(false);
 
@@ -159,6 +163,9 @@ export default function App() {
           {(page.id==='corpus'||page.id==='standards') && <CorporaStandardsSection mode={page.id} isSaved={isSaved} onToggleSaveCorpus={handleToggleSaveCorpus}/>}
           {(page.id==='glossaire'||page.id==='bibliographie') && <MethodsGlossarySection mode={page.id} isSaved={isSaved} onToggleSaveBib={handleToggleSaveBib}/>}
           {page.id==='ecosysteme' && <EcosystemSection/>}
+          {page.id==='laboratoire' && <Laboratory/>}
+          {page.id==='cartographie' && <KnowledgeMap/>}
+          {page.id==='recherche' && <GlobalSearch/>}
           {(page.id==='disciplines'||page.id==='ia'||page.id==='formations'||page.id==='mondes') && <ResearchGuides page={page.id}/>}
         </>}
       </main>

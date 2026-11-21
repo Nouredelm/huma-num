@@ -206,7 +206,7 @@ export function MethodsGlossarySection({
                 </div>
               ) : (
                 filteredGlossary.map((item) => (
-                  <div key={item.id} className="p-5">
+                  <div key={item.id} id={'term-'+item.id} className="p-5">
                     <p className="text-xs text-[#425E73] dark:text-[#C3D7E5]">
                       <span>{item.category}</span>
                       <span aria-hidden="true" className="mx-1.5 text-[#C3D7E5] dark:text-[#425E73]">·</span>
@@ -286,7 +286,7 @@ export function MethodsGlossarySection({
                 const bibCopied = copiedId === `${entry.id}-bib`;
 
                 return (
-                  <article key={entry.id} className="p-6">
+                  <article key={entry.id} id={'bib-'+entry.id} className="p-6">
                     <p className="text-xs text-[#425E73] dark:text-[#C3D7E5]">
                       <span>{entry.theme}</span>
                       <span aria-hidden="true" className="mx-1.5 text-[#C3D7E5] dark:text-[#425E73]">·</span>

@@ -228,6 +228,7 @@ export function ToolsDirectorySection({
               return (
                 <article
                   key={tool.id}
+                  id={'tool-'+tool.id}
                   className="flex flex-col justify-between bg-white dark:bg-[#193B55] border border-[#D5E4EE] dark:border-[#365A73] rounded-md p-6 hover:border-[#A9C4D8] dark:hover:border-[#526A7C] transition-colors"
                 >
                   <div>

@@ -63,6 +63,7 @@ export function EcosystemSection() {
           {filteredItems.map((item, idx) => (
             <article
               key={item.id}
+              id={'eco-'+item.id}
               className="py-5 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start"
             >
               <div className="lg:col-span-4">

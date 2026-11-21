@@ -12,7 +12,7 @@ interface PanoramaSectionProps {
 }
 
 export function PanoramaSection({onSelectTool}: PanoramaSectionProps) {
-  const [activePhaseId, setActivePhaseId] = useState<string>(RESEARCH_PHASES[0].id);
+  const [activePhaseId, setActivePhaseId] = useState<string>(()=>{const id=new URLSearchParams(location.search).get('phase');return RESEARCH_PHASES.some(p=>p.id===id)?id!:RESEARCH_PHASES[0].id;});
   const [showTimeline, setShowTimeline] = useState<boolean>(false);
 
   const activePhase =

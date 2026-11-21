@@ -1,4 +1,4 @@
-import {Home, Compass, Wrench, Database, FileCode, BookOpen, Library, Network, Shapes, Brain, GraduationCap, Globe} from 'lucide-react';
+import {Home, Compass, Wrench, Database, FileCode, BookOpen, Library, Network, Shapes, Brain, GraduationCap, Globe, FlaskConical, Share2, Search} from 'lucide-react';
 import {GENERATED_IMAGES} from './humnumData';
 export const PAGES = [
   {id:'accueil', href:'/', title:'Accueil', label:'Accueil', icon:Home, description:'Portail des humanités numériques', image:GENERATED_IMAGES.heroArchive},
@@ -13,6 +13,9 @@ export const PAGES = [
   {id:'ia',href:'/ia',title:"IA & humanités",label:"IA & SHS",icon:Brain,description:"Comprendre, expérimenter et évaluer l’intelligence artificielle au service des SHS.",image:null},
   {id:'formations',href:'/formations',title:"Formations",label:"Formations",icon:GraduationCap,description:"Des parcours progressifs pour passer des premières notions à un projet reproductible.",image:null},
   {id:'mondes',href:'/mondes',title:"Mondes & patrimoines",label:"Mondes",icon:Globe,description:"Ressources du Maroc, du Maghreb, de l’Afrique et du monde arabe, dans une perspective internationale.",image:GENERATED_IMAGES.corpusDigitization},
+  {id:'laboratoire',href:'/laboratoire',title:"Laboratoire interactif",label:'Laboratoire',icon:FlaskConical,description:"Analyser des textes, explorer fréquences et concordances, examiner des documents XML-TEI dans votre navigateur.",image:null},
+  {id:'cartographie',href:'/cartographie',title:"Cartographie des connaissances",label:'Cartographie',icon:Share2,description:"Explorer les relations entre disciplines, méthodes, outils, concepts et standards.",image:null},
+  {id:'recherche',href:'/recherche',title:"Recherche transversale",label:'Recherche',icon:Search,description:"Retrouver une ressource, une notion, un outil ou une fiche dans tout le portail.",image:null},
 ] as const;
 export type PageId = typeof PAGES[number]['id'];
 export function currentPage() {

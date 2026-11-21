@@ -19,7 +19,7 @@ export function CorporaStandardsSection({
   isSaved,
   onToggleSaveCorpus,
 }: CorporaStandardsSectionProps) {
-  const [activeStandardId, setActiveStandardId] = useState<string>(STANDARDS[0].id);
+  const [activeStandardId, setActiveStandardId] = useState<string>(()=>{const id=new URLSearchParams(location.search).get('standard');return STANDARDS.some(s=>s.id===id)?id!:STANDARDS[0].id;});
   const [copiedSnippet, setCopiedSnippet] = useState(false);
 
   const activeStandard =
@@ -123,6 +123,7 @@ export function CorporaStandardsSection({
               return (
                 <article
                   key={corpus.id}
+                  id={'corpus-'+corpus.id}
                   className="border border-[#D5E4EE] dark:border-[#365A73] rounded-md p-6 bg-[#F4F7F9] dark:bg-[#234760] flex flex-col justify-between"
                 >
                   <div>
@@ -192,7 +193,7 @@ export function CorporaStandardsSection({
         </>}
         {mode === "standards" && <>
         {/* Interactive Standards Inspector */}
-        <div className="mt-14 border border-[#D5E4EE] dark:border-[#365A73] rounded-md bg-[#F4F7F9] dark:bg-[#234760] overflow-hidden">
+        <div id="standard-inspector" className="mt-14 border border-[#D5E4EE] dark:border-[#365A73] rounded-md bg-[#F4F7F9] dark:bg-[#234760] overflow-hidden">
           <div className="p-6 lg:px-8 border-b border-[#D5E4EE] dark:border-[#365A73] flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-white dark:bg-[#193B55]">
             <div>
               <h3 className="font-serif text-2xl font-semibold text-[#193B55] dark:text-[#F4F7F9]">

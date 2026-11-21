@@ -1,11 +1,11 @@
 import {useEffect,useRef,useState} from 'react';
-import {Bookmark,Moon,Sun,Menu,ChevronDown,X} from 'lucide-react';
+import {Bookmark,Moon,Sun,Menu,ChevronDown,X,Search} from 'lucide-react';
 import {PAGES,type PageId} from '../data/pages';
 interface HeaderProps {page:PageId;selectionCount:number;onOpenSelection:()=>void;isDark:boolean;onToggleTheme:()=>void;}
 const GROUPS:{title:string;ids:PageId[]}[]=[
  {title:'Comprendre & apprendre',ids:['accueil','panorama','disciplines','formations']},
- {title:'Explorer & expérimenter',ids:['outils','corpus','standards','ia']},
- {title:'Se documenter & échanger',ids:['glossaire','bibliographie','ecosysteme','mondes']}
+ {title:'Explorer & expérimenter',ids:['outils','corpus','standards','ia','laboratoire','cartographie']},
+ {title:'Se documenter & échanger',ids:['glossaire','bibliographie','ecosysteme','mondes','recherche']}
 ];
 export function Header({page,selectionCount,onOpenSelection,isDark,onToggleTheme}:HeaderProps){
  const [open,setOpen]=useState(false);
@@ -24,6 +24,7 @@ export function Header({page,selectionCount,onOpenSelection,isDark,onToggleTheme
   <div className="hn-header-inner hn-compact-inner">
    <div className="hn-brand-row"><a href="/" className="hn-wordmark" aria-label="HumaNum, accueil">Huma<span className="hn-brand-accent">Num</span></a><span className="hn-brand-subtitle">Portail des humanités numériques</span></div>
    <div className="hn-header-actions">
+    <a className="hn-search-shortcut" href="/recherche" aria-label="Rechercher dans le portail" title="Recherche transversale"><Search size={19} aria-hidden="true"/></a>
     <button ref={triggerRef} className="hn-explore-trigger" type="button" aria-expanded={open} aria-controls="hn-navigation-panel" onClick={()=>setOpen(v=>!v)} aria-label={open?'Fermer la navigation':'Explorer le portail'}>{open?<X size={18} aria-hidden="true"/>:<Menu size={18} aria-hidden="true"/>}<span className="hn-explore-label">Explorer le portail</span><ChevronDown className={open?'hn-chevron hn-chevron-open':'hn-chevron'} size={14} aria-hidden="true"/></button>
     <button type="button" onClick={onToggleTheme} aria-pressed={isDark} aria-label={isDark?'Activer le mode clair':'Activer le mode sombre'} title={isDark?'Mode clair':'Mode sombre'}>{isDark?<Sun size={17} aria-hidden="true"/>:<Moon size={17} aria-hidden="true"/>}</button>
     <button type="button" onClick={()=>{setOpen(false);onOpenSelection();}} aria-label={`Ma sélection (${selectionCount})`}><Bookmark size={16} aria-hidden="true"/><span className="hn-selection-label">Ma sélection</span><span>({selectionCount})</span></button>
