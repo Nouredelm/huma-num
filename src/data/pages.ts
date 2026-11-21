@@ -1,4 +1,4 @@
-import {Home, Compass, Wrench, Database, FileCode, BookOpen, Library, Network, Shapes, Brain, GraduationCap, Globe, FlaskConical, Share2, Search} from 'lucide-react';
+import {Home, Compass, Wrench, Database, FileCode, BookOpen, Library, Network, Shapes, Brain, GraduationCap, Globe, FlaskConical, Share2, Search, FolderOpen, BookMarked, PlayCircle, Rss, Columns3} from 'lucide-react';
 import {GENERATED_IMAGES} from './humnumData';
 export const PAGES = [
   {id:'accueil', href:'/', title:'Accueil', label:'Accueil', icon:Home, description:'Portail des humanités numériques', image:GENERATED_IMAGES.heroArchive},
@@ -16,6 +16,11 @@ export const PAGES = [
   {id:'laboratoire',href:'/laboratoire',title:"Laboratoire interactif",label:'Laboratoire',icon:FlaskConical,description:"Analyser des textes, explorer fréquences et concordances, examiner des documents XML-TEI dans votre navigateur.",image:null},
   {id:'cartographie',href:'/cartographie',title:"Cartographie des connaissances",label:'Cartographie',icon:Share2,description:"Explorer les relations entre disciplines, méthodes, outils, concepts et standards.",image:null},
   {id:'recherche',href:'/recherche',title:"Recherche transversale",label:'Recherche',icon:Search,description:"Retrouver une ressource, une notion, un outil ou une fiche dans tout le portail.",image:null},
+  {id:'cas',href:'/cas',title:"Études de cas",label:"Études de cas",icon:FolderOpen,description:"Découvrir des projets scientifiques réels et reproduire des démarches à petite échelle.",image:null},
+  {id:'bibliotheque',href:'/bibliotheque',title:"Bibliothèque numérique",label:"Bibliothèque numérique",icon:BookMarked,description:"Lire des ouvrages, articles et guides scientifiques en ligne.",image:null},
+  {id:'mediatheque',href:'/mediatheque',title:"Médiathèque",label:"Médiathèque",icon:PlayCircle,description:"Conférences, vidéos et formations audiovisuelles pour approfondir les méthodes.",image:null},
+  {id:'veille',href:'/veille',title:"Veille scientifique",label:"Veille scientifique",icon:Rss,description:"Suivre les publications, appels et événements à partir de sources institutionnelles.",image:null},
+  {id:'comparateur',href:'/comparateur',title:"Comparateur d’outils",label:"Comparateur d’outils",icon:Columns3,description:"Comparer les logiciels du répertoire selon les usages, formats, licences et niveaux.",image:null},
 ] as const;
 export type PageId = typeof PAGES[number]['id'];
 export function currentPage() {

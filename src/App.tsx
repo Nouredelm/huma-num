@@ -2,6 +2,9 @@ import {useEffect, useState} from 'react';
 import {Laboratory} from './components/Laboratory';
 import {KnowledgeMap} from './components/KnowledgeMap';
 import {GlobalSearch} from './components/GlobalSearch';
+import {EditorialResources} from './components/EditorialResources';
+import {ToolCompare} from './components/ToolCompare';
+import {ScientificWatch} from './components/ScientificWatch';
 import {ResearchGuides} from './components/ResearchGuides';
 import {currentPage} from './data/pages';
 import {PageOverview, PageIntro} from './components/PageOverview';
@@ -166,6 +169,9 @@ export default function App() {
           {page.id==='laboratoire' && <Laboratory/>}
           {page.id==='cartographie' && <KnowledgeMap/>}
           {page.id==='recherche' && <GlobalSearch/>}
+          {(page.id==='cas'||page.id==='bibliotheque'||page.id==='mediatheque') && <EditorialResources page={page.id}/>}
+          {page.id==='comparateur' && <ToolCompare/>}
+          {page.id==='veille' && <ScientificWatch/>}
           {(page.id==='disciplines'||page.id==='ia'||page.id==='formations'||page.id==='mondes') && <ResearchGuides page={page.id}/>}
         </>}
       </main>

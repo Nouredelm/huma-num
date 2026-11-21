@@ -3,9 +3,9 @@ import {Bookmark,Moon,Sun,Menu,ChevronDown,X,Search} from 'lucide-react';
 import {PAGES,type PageId} from '../data/pages';
 interface HeaderProps {page:PageId;selectionCount:number;onOpenSelection:()=>void;isDark:boolean;onToggleTheme:()=>void;}
 const GROUPS:{title:string;ids:PageId[]}[]=[
- {title:'Comprendre & apprendre',ids:['accueil','panorama','disciplines','formations']},
- {title:'Explorer & expérimenter',ids:['outils','corpus','standards','ia','laboratoire','cartographie']},
- {title:'Se documenter & échanger',ids:['glossaire','bibliographie','ecosysteme','mondes','recherche']}
+ {title:'Comprendre & apprendre',ids:['accueil','panorama','disciplines','formations','cas','mediatheque']},
+ {title:'Explorer & expérimenter',ids:['outils','corpus','standards','ia','laboratoire','cartographie','comparateur']},
+ {title:'Se documenter & échanger',ids:['glossaire','bibliographie','ecosysteme','mondes','bibliotheque','veille','recherche']}
 ];
 export function Header({page,selectionCount,onOpenSelection,isDark,onToggleTheme}:HeaderProps){
  const [open,setOpen]=useState(false);
