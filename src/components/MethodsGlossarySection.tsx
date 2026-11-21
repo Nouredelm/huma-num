@@ -44,7 +44,7 @@ function HighlightMatch({text, query}: {text: string; query: string}) {
   return (
     <>
       {before}
-      <mark className="bg-[#1E3A8A]/15 dark:bg-[#60A5FA]/25 text-inherit rounded-xs px-0.5">
+      <mark className="bg-[#2D5876]/15 dark:bg-[#D8C497]/25 text-inherit rounded-xs px-0.5">
         {match}
       </mark>
       {after}
@@ -99,16 +99,16 @@ export function MethodsGlossarySection({
   };
 
   return (
-    <section id="methodes" className="py-16 lg:py-20 border-b border-[#E4E2DC] dark:border-[#2E2E34] bg-[#FAF9F6] dark:bg-[#111113] transition-colors">
+    <section id="methodes" className="py-16 lg:py-20 border-b border-[#D5E4EE] dark:border-[#365A73] bg-[#F4F7F9] dark:bg-[#102A3E] transition-colors">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
         {/* Section Heading */}
-        <div className="pb-8 border-b border-[#E4E2DC] dark:border-[#2E2E34]">
-          <p className="text-xs text-[#52525B] dark:text-[#A1A1AA] mb-2">
+        <div className="pb-8 border-b border-[#D5E4EE] dark:border-[#365A73]">
+          <p className="text-xs text-[#425E73] dark:text-[#C3D7E5] mb-2">
             04. Concepts &amp; Littérature scientifique
-            <span aria-hidden="true" className="mx-2 text-[#A1A1AA] dark:text-[#52525B]">·</span>
+            <span aria-hidden="true" className="mx-2 text-[#C3D7E5] dark:text-[#425E73]">·</span>
             Vocabulaire critique &amp; ouvrages essentiels
           </p>
-          <h2 className="font-serif text-3xl lg:text-4xl font-semibold text-[#18181B] dark:text-[#F4F4F5] text-balance">
+          <h2 className="font-serif text-3xl lg:text-4xl font-semibold text-[#193B55] dark:text-[#F4F7F9] text-balance">
             Glossaire critique et bibliographie de référence
           </h2>
         </div>
@@ -117,12 +117,12 @@ export function MethodsGlossarySection({
           {/* Left Column: Critical Glossary (5 cols) */}
           <div className="lg:col-span-5">
             <div className="flex items-center justify-between gap-4 mb-4">
-              <h3 className="font-serif text-2xl font-semibold text-[#18181B] dark:text-[#F4F4F5]">
+              <h3 className="font-serif text-2xl font-semibold text-[#193B55] dark:text-[#F4F7F9]">
                 Glossaire des notions
               </h3>
               <span
                 aria-live="polite"
-                className="text-xs text-[#52525B] dark:text-[#A1A1AA] tabular-nums"
+                className="text-xs text-[#425E73] dark:text-[#C3D7E5] tabular-nums"
               >
                 {filteredGlossary.length} / {GLOSSARY_TERMS.length} entrées
               </span>
@@ -131,7 +131,7 @@ export function MethodsGlossarySection({
             <div className="space-y-3 mb-5">
               <div className="relative">
                 <Search
-                  className="w-4 h-4 text-[#71717A] dark:text-[#A1A1AA] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
+                  className="w-4 h-4 text-[#526A7C] dark:text-[#C3D7E5] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
                   aria-hidden="true"
                 />
                 <input
@@ -140,14 +140,14 @@ export function MethodsGlossarySection({
                   onChange={(e) => setGlossarySearch(e.target.value)}
                   placeholder="Rechercher un terme, mot-clé (TEI, FAIR, HTR...)"
                   aria-label="Rechercher dans le glossaire en temps réel"
-                  className="w-full pl-9 pr-9 py-2.5 text-sm bg-white dark:bg-[#18181B] border border-[#D6D3CB] dark:border-[#3A3A42] rounded-md text-[#18181B] dark:text-[#F4F4F5] placeholder:text-[#71717A] focus:outline-none focus:border-[#1E3A8A] dark:focus:border-[#60A5FA]"
+                  className="w-full pl-9 pr-9 py-2.5 text-sm bg-white dark:bg-[#193B55] border border-[#B9CEDD] dark:border-[#486C85] rounded-md text-[#193B55] dark:text-[#F4F7F9] placeholder:text-[#526A7C] focus:outline-none focus:border-[#2D5876] dark:focus:border-[#D8C497]"
                 />
                 {glossarySearch && (
                   <button
                     type="button"
                     onClick={() => setGlossarySearch('')}
                     aria-label="Effacer la recherche du glossaire"
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#71717A] hover:text-[#18181B] dark:hover:text-[#F4F4F5] cursor-pointer"
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#526A7C] hover:text-[#193B55] dark:hover:text-[#F4F7F9] cursor-pointer"
                   >
                     <X className="w-4 h-4" />
                   </button>
@@ -155,14 +155,14 @@ export function MethodsGlossarySection({
               </div>
 
               <div className="flex items-center justify-between gap-3">
-                <label htmlFor="glossary-category-select" className="text-xs font-medium text-[#52525B] dark:text-[#A1A1AA] shrink-0">
+                <label htmlFor="glossary-category-select" className="text-xs font-medium text-[#425E73] dark:text-[#C3D7E5] shrink-0">
                   Domaine :
                 </label>
                 <select
                   id="glossary-category-select"
                   value={glossaryCategory}
                   onChange={(e) => setGlossaryCategory(e.target.value)}
-                  className="flex-1 text-xs bg-white dark:bg-[#18181B] border border-[#D6D3CB] dark:border-[#3A3A42] rounded-md px-2.5 py-1.5 text-[#18181B] dark:text-[#F4F4F5] focus:outline-none focus:border-[#1E3A8A] dark:focus:border-[#60A5FA]"
+                  className="flex-1 text-xs bg-white dark:bg-[#193B55] border border-[#B9CEDD] dark:border-[#486C85] rounded-md px-2.5 py-1.5 text-[#193B55] dark:text-[#F4F7F9] focus:outline-none focus:border-[#2D5876] dark:focus:border-[#D8C497]"
                 >
                   {glossaryCategories.map((cat) => (
                     <option key={cat} value={cat}>
@@ -177,7 +177,7 @@ export function MethodsGlossarySection({
                       setGlossarySearch('');
                       setGlossaryCategory('Toutes');
                     }}
-                    className="text-xs font-medium text-[#1E3A8A] dark:text-[#60A5FA] hover:underline underline-offset-4 whitespace-nowrap shrink-0 cursor-pointer"
+                    className="text-xs font-medium text-[#2D5876] dark:text-[#D8C497] hover:underline underline-offset-4 whitespace-nowrap shrink-0 cursor-pointer"
                   >
                     Réinitialiser
                   </button>
@@ -185,10 +185,10 @@ export function MethodsGlossarySection({
               </div>
             </div>
 
-            <div className="border border-[#E4E2DC] dark:border-[#2E2E34] rounded-md bg-white dark:bg-[#18181B] divide-y divide-[#E4E2DC] dark:divide-[#2E2E34] max-h-[680px] overflow-y-auto">
+            <div className="border border-[#D5E4EE] dark:border-[#365A73] rounded-md bg-white dark:bg-[#193B55] divide-y divide-[#D5E4EE] dark:divide-[#365A73] max-h-[680px] overflow-y-auto">
               {filteredGlossary.length === 0 ? (
                 <div className="p-8 text-center">
-                  <p className="text-sm text-[#52525B] dark:text-[#A1A1AA]">
+                  <p className="text-sm text-[#425E73] dark:text-[#C3D7E5]">
                     Aucune notion trouvée pour « {glossarySearch} ».
                   </p>
                   <button
@@ -197,7 +197,7 @@ export function MethodsGlossarySection({
                       setGlossarySearch('');
                       setGlossaryCategory('Toutes');
                     }}
-                    className="mt-3 text-xs font-medium text-[#1E3A8A] dark:text-[#60A5FA] hover:underline underline-offset-4 cursor-pointer"
+                    className="mt-3 text-xs font-medium text-[#2D5876] dark:text-[#D8C497] hover:underline underline-offset-4 cursor-pointer"
                   >
                     Afficher toutes les notions
                   </button>
@@ -205,21 +205,21 @@ export function MethodsGlossarySection({
               ) : (
                 filteredGlossary.map((item) => (
                   <div key={item.id} className="p-5">
-                    <p className="text-xs text-[#52525B] dark:text-[#A1A1AA]">
+                    <p className="text-xs text-[#425E73] dark:text-[#C3D7E5]">
                       <span>{item.category}</span>
-                      <span aria-hidden="true" className="mx-1.5 text-[#A1A1AA] dark:text-[#52525B]">·</span>
+                      <span aria-hidden="true" className="mx-1.5 text-[#C3D7E5] dark:text-[#425E73]">·</span>
                       <span className="italic">
                         <HighlightMatch text={item.english} query={glossarySearch} />
                       </span>
                     </p>
-                    <h4 className="mt-1 font-serif text-xl font-semibold text-[#18181B] dark:text-[#F4F4F5]">
+                    <h4 className="mt-1 font-serif text-xl font-semibold text-[#193B55] dark:text-[#F4F7F9]">
                       <HighlightMatch text={item.term} query={glossarySearch} />
                     </h4>
-                    <p className="mt-2 text-sm leading-relaxed text-[#3F3F46] dark:text-[#D4D4D8]">
+                    <p className="mt-2 text-sm leading-relaxed text-[#3D596D] dark:text-[#E0EAF1]">
                       <HighlightMatch text={item.definition} query={glossarySearch} />
                     </p>
                     {item.related.length > 0 && (
-                      <p className="mt-2.5 text-xs text-[#71717A] dark:text-[#A1A1AA]">
+                      <p className="mt-2.5 text-xs text-[#526A7C] dark:text-[#C3D7E5]">
                         Voir aussi :{' '}
                         {item.related.map((rel, idx) => (
                           <span key={rel}>
@@ -229,7 +229,7 @@ export function MethodsGlossarySection({
                                 setGlossaryCategory('Toutes');
                                 setGlossarySearch(rel);
                               }}
-                              className="text-[#1E3A8A] dark:text-[#60A5FA] hover:underline underline-offset-2 cursor-pointer"
+                              className="text-[#2D5876] dark:text-[#D8C497] hover:underline underline-offset-2 cursor-pointer"
                             >
                               {rel}
                             </button>
@@ -247,14 +247,14 @@ export function MethodsGlossarySection({
           {/* Right Column: Bibliography (7 cols) */}
           <div className="lg:col-span-7">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
-              <h3 className="font-serif text-2xl font-semibold text-[#18181B] dark:text-[#F4F4F5]">
+              <h3 className="font-serif text-2xl font-semibold text-[#193B55] dark:text-[#F4F7F9]">
                 Bibliographie essentielle
               </h3>
 
               <div
                 role="group"
                 aria-label="Filtrer la bibliographie par thème"
-                className="flex flex-wrap items-center gap-1 p-1 bg-[#EFECE5] dark:bg-[#27272A] rounded-md"
+                className="flex flex-wrap items-center gap-1 p-1 bg-[#E9DBB4] dark:bg-[#2D5876] rounded-md"
               >
                 {BIB_THEMES.map((theme) => {
                   const active = bibTheme === theme;
@@ -265,8 +265,8 @@ export function MethodsGlossarySection({
                       onClick={() => setBibTheme(theme)}
                       className={`px-2.5 py-1.5 text-xs font-medium rounded-sm transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                         active
-                          ? 'bg-white dark:bg-[#18181B] text-[#18181B] dark:text-[#F4F4F5] shadow-xs'
-                          : 'text-[#52525B] dark:text-[#A1A1AA] hover:text-[#18181B] dark:hover:text-[#F4F4F5]'
+                          ? 'bg-white dark:bg-[#193B55] text-[#193B55] dark:text-[#F4F7F9] shadow-xs'
+                          : 'text-[#425E73] dark:text-[#C3D7E5] hover:text-[#193B55] dark:hover:text-[#F4F7F9]'
                       }`}
                     >
                       {theme}
@@ -276,7 +276,7 @@ export function MethodsGlossarySection({
               </div>
             </div>
 
-            <div className="divide-y divide-[#E4E2DC] dark:divide-[#2E2E34] border border-[#E4E2DC] dark:border-[#2E2E34] rounded-md bg-white dark:bg-[#18181B]">
+            <div className="divide-y divide-[#D5E4EE] dark:divide-[#365A73] border border-[#D5E4EE] dark:border-[#365A73] rounded-md bg-white dark:bg-[#193B55]">
               {filteredBib.map((entry) => {
                 const saved = isSaved(entry.id);
                 const isoCopied = copiedId === `${entry.id}-iso`;
@@ -284,35 +284,35 @@ export function MethodsGlossarySection({
 
                 return (
                   <article key={entry.id} className="p-6">
-                    <p className="text-xs text-[#52525B] dark:text-[#A1A1AA]">
+                    <p className="text-xs text-[#425E73] dark:text-[#C3D7E5]">
                       <span>{entry.theme}</span>
-                      <span aria-hidden="true" className="mx-1.5 text-[#A1A1AA] dark:text-[#52525B]">·</span>
+                      <span aria-hidden="true" className="mx-1.5 text-[#C3D7E5] dark:text-[#425E73]">·</span>
                       <span className="font-mono tabular-nums">{entry.year}</span>
-                      <span aria-hidden="true" className="mx-1.5 text-[#A1A1AA] dark:text-[#52525B]">·</span>
+                      <span aria-hidden="true" className="mx-1.5 text-[#C3D7E5] dark:text-[#425E73]">·</span>
                       <span>{entry.publisher}</span>
                     </p>
 
-                    <h4 className="mt-1.5 font-serif text-xl lg:text-2xl font-semibold text-[#18181B] dark:text-[#F4F4F5]">
+                    <h4 className="mt-1.5 font-serif text-xl lg:text-2xl font-semibold text-[#193B55] dark:text-[#F4F7F9]">
                       {entry.title}
                     </h4>
 
-                    <p className="mt-0.5 text-sm font-medium text-[#3F3F46] dark:text-[#D4D4D8]">
+                    <p className="mt-0.5 text-sm font-medium text-[#3D596D] dark:text-[#E0EAF1]">
                       {entry.authors}
                     </p>
 
-                    <p className="mt-3 text-sm leading-relaxed text-[#52525B] dark:text-[#A1A1AA]">
+                    <p className="mt-3 text-sm leading-relaxed text-[#425E73] dark:text-[#C3D7E5]">
                       {entry.abstract}
                     </p>
 
-                    <div className="mt-4 pt-3 border-t border-[#F1EFEA] dark:border-[#27272A] flex flex-wrap items-center justify-between gap-3">
+                    <div className="mt-4 pt-3 border-t border-[#EAF2F7] dark:border-[#2D5876] flex flex-wrap items-center justify-between gap-3">
                       <div className="flex flex-wrap items-center gap-2">
                         <button
                           type="button"
                           onClick={() => handleCopyCitation(`${entry.id}-iso`, entry.iso690)}
-                          className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-[#52525B] dark:text-[#D4D4D8] hover:text-[#18181B] dark:hover:text-white bg-[#FAF9F6] dark:bg-[#1F1F23] border border-[#E4E2DC] dark:border-[#3A3A42] rounded-sm transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-[#425E73] dark:text-[#E0EAF1] hover:text-[#193B55] dark:hover:text-white bg-[#F4F7F9] dark:bg-[#234760] border border-[#D5E4EE] dark:border-[#486C85] rounded-sm transition-colors whitespace-nowrap shrink-0 cursor-pointer"
                         >
                           {isoCopied ? (
-                            <Check className="w-3.5 h-3.5 text-[#1E3A8A] dark:text-[#60A5FA]" aria-hidden="true" />
+                            <Check className="w-3.5 h-3.5 text-[#2D5876] dark:text-[#D8C497]" aria-hidden="true" />
                           ) : (
                             <Copy className="w-3.5 h-3.5" aria-hidden="true" />
                           )}
@@ -322,10 +322,10 @@ export function MethodsGlossarySection({
                         <button
                           type="button"
                           onClick={() => handleCopyCitation(`${entry.id}-bib`, entry.bibtex)}
-                          className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-[#52525B] dark:text-[#D4D4D8] hover:text-[#18181B] dark:hover:text-white bg-[#FAF9F6] dark:bg-[#1F1F23] border border-[#E4E2DC] dark:border-[#3A3A42] rounded-sm transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-[#425E73] dark:text-[#E0EAF1] hover:text-[#193B55] dark:hover:text-white bg-[#F4F7F9] dark:bg-[#234760] border border-[#D5E4EE] dark:border-[#486C85] rounded-sm transition-colors whitespace-nowrap shrink-0 cursor-pointer"
                         >
                           {bibCopied ? (
-                            <Check className="w-3.5 h-3.5 text-[#1E3A8A] dark:text-[#60A5FA]" aria-hidden="true" />
+                            <Check className="w-3.5 h-3.5 text-[#2D5876] dark:text-[#D8C497]" aria-hidden="true" />
                           ) : (
                             <Copy className="w-3.5 h-3.5" aria-hidden="true" />
                           )}
@@ -339,8 +339,8 @@ export function MethodsGlossarySection({
                         aria-pressed={saved}
                         className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-sm border transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                           saved
-                            ? 'bg-[#1E3A8A]/8 dark:bg-[#2563EB]/15 border-[#1E3A8A]/30 dark:border-[#60A5FA]/40 text-[#1E3A8A] dark:text-[#93C5FD]'
-                            : 'bg-white dark:bg-[#18181B] border-[#D6D3CB] dark:border-[#3A3A42] text-[#52525B] dark:text-[#D4D4D8] hover:text-[#18181B] dark:hover:text-white'
+                            ? 'bg-[#2D5876]/8 dark:bg-[#3D7497]/15 border-[#2D5876]/30 dark:border-[#D8C497]/40 text-[#2D5876] dark:text-[#D8C497]'
+                            : 'bg-white dark:bg-[#193B55] border-[#B9CEDD] dark:border-[#486C85] text-[#425E73] dark:text-[#E0EAF1] hover:text-[#193B55] dark:hover:text-white'
                         }`}
                       >
                         {saved ? (

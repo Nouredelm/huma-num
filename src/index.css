@@ -11,13 +11,13 @@
   html {
     font-family: var(--font-sans);
     scroll-behavior: smooth;
-    background-color: #FAF9F6;
-    color: #18181B;
+    background-color: #F4F7F9;
+    color: #193B55;
   }
 
   html.dark {
-    background-color: #111113;
-    color: #F4F4F5;
+    background-color: #102A3E;
+    color: #F4F7F9;
     color-scheme: dark;
   }
 
@@ -46,3 +46,20 @@
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
+
+/* HumaNum — identité visuelle et accessibilité */
+:root { --hn-reference: #3D7497; --hn-primary: #2D5876; --hn-deep: #193B55; --hn-gold: #D8C497; }
+html { scroll-padding-top: 5rem; }
+.hn-header, .dark .hn-header, .hn-footer, .dark .hn-footer { background: var(--hn-deep); color: #F4F7F9; border-color: var(--hn-gold); }
+.hn-header { border-bottom: 2px solid var(--hn-gold); }
+.hn-footer { border-top: 2px solid var(--hn-gold); }
+.hn-header a, .hn-footer a, .hn-footer p, .hn-footer button, .hn-header nav { color: #E5EEF3; }
+.hn-header a:hover, .hn-footer a:hover, .hn-footer button:hover, .hn-brand-accent { color: var(--hn-gold); }
+.hn-header nav[aria-label="Navigation mobile"] { background: var(--hn-deep); border-color: #486C85; }
+.hn-header button { background: var(--hn-primary); color: #fff; border-color: #6E96B1; }
+.hn-header button:hover { background: var(--hn-reference); color: #fff; }
+.hn-header :focus-visible, .hn-footer :focus-visible { outline: 2px solid var(--hn-gold); outline-offset: 3px; }
+.hn-hero { background: linear-gradient(115deg, #F4F7F9, #EAF2F7); }
+.dark .hn-hero { background: linear-gradient(115deg, #102A3E, #193B55); }
+.hn-skip { position: fixed; top: 8px; left: 8px; z-index: 100; transform: translateY(-200%); background: var(--hn-deep); color: #fff; padding: 10px 16px; border: 2px solid var(--hn-gold); border-radius: 6px; }
+.hn-skip:focus { transform: none; }

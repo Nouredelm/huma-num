@@ -136,7 +136,8 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF9F6] dark:bg-[#111113] text-[#18181B] dark:text-[#F4F4F5] transition-colors">
+    <div className="min-h-screen flex flex-col bg-[#F4F7F9] dark:bg-[#102A3E] text-[#193B55] dark:text-[#F4F7F9] transition-colors">
+      <a href="#contenu" className="hn-skip">Aller au contenu</a>
       <Header
         selectionCount={savedItems.length}
         onOpenSelection={() => setSelectionDrawerOpen(true)}
@@ -144,7 +145,7 @@ export default function App() {
         onToggleTheme={() => setIsDark((prev) => !prev)}
       />
 
-      <main className="flex-1">
+      <main id="contenu" className="flex-1">
         <HeroSection
           toolCount={TOOLS.length}
           corpusCount={CORPORA.length}
