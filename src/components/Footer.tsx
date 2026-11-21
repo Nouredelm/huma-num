@@ -1,3 +1,4 @@
+import {PAGES} from "../data/pages";
 interface FooterProps {
   onOpenSelection: () => void;
 }
@@ -17,21 +18,7 @@ export function Footer({onOpenSelection}: FooterProps) {
           </div>
 
           <div className="flex flex-wrap items-center gap-6 text-sm text-[#425E73] dark:text-[#C3D7E5]">
-            <a href="#panorama" className="hover:text-[#193B55] dark:hover:text-[#F4F7F9] transition-colors">
-              Panorama
-            </a>
-            <a href="#outils" className="hover:text-[#193B55] dark:hover:text-[#F4F7F9] transition-colors">
-              Outils
-            </a>
-            <a href="#corpus" className="hover:text-[#193B55] dark:hover:text-[#F4F7F9] transition-colors">
-              Corpus
-            </a>
-            <a href="#methodes" className="hover:text-[#193B55] dark:hover:text-[#F4F7F9] transition-colors">
-              Méthodes
-            </a>
-            <a href="#ecosysteme" className="hover:text-[#193B55] dark:hover:text-[#F4F7F9] transition-colors">
-              Écosystème
-            </a>
+            {PAGES.filter(p=>p.id!=='accueil').map(p=><a key={p.id} href={p.href} className="hover:underline">{p.label}</a>)}
             <button
               type="button"
               onClick={onOpenSelection}

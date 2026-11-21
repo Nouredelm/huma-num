@@ -9,11 +9,13 @@ import {
 import {ResilientImage} from './ResilientImage';
 
 interface CorporaStandardsSectionProps {
+  mode: 'corpus' | 'standards';
   isSaved: (id: string) => boolean;
   onToggleSaveCorpus: (corpus: CorpusItem) => void;
 }
 
 export function CorporaStandardsSection({
+  mode,
   isSaved,
   onToggleSaveCorpus,
 }: CorporaStandardsSectionProps) {
@@ -34,7 +36,7 @@ export function CorporaStandardsSection({
   };
 
   return (
-    <section id="corpus" className="py-16 lg:py-20 border-b border-[#D5E4EE] dark:border-[#365A73] bg-white dark:bg-[#193B55] transition-colors">
+    <section id={mode} className="py-16 lg:py-20 border-b border-[#D5E4EE] dark:border-[#365A73] bg-white dark:bg-[#193B55] transition-colors">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
         {/* Section Header */}
         <div className="pb-8 border-b border-[#D5E4EE] dark:border-[#365A73]">
@@ -44,10 +46,11 @@ export function CorporaStandardsSection({
             Archives patrimoniales &amp; standards techniques
           </p>
           <h2 className="font-serif text-3xl lg:text-4xl font-semibold text-[#193B55] dark:text-[#F4F7F9] text-balance">
-            Bibliothèques numériques et protocoles pérennes
+            {mode === "corpus" ? "Bibliothèques numériques et collections ouvertes" : "Protocoles et formats pérennes"}
           </h2>
         </div>
 
+        {mode === "corpus" && <>
         {/* 3 Thematic Visual Dossiers */}
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
           <figure>
@@ -186,6 +189,8 @@ export function CorporaStandardsSection({
           </div>
         </div>
 
+        </>}
+        {mode === "standards" && <>
         {/* Interactive Standards Inspector */}
         <div className="mt-14 border border-[#D5E4EE] dark:border-[#365A73] rounded-md bg-[#F4F7F9] dark:bg-[#234760] overflow-hidden">
           <div className="p-6 lg:px-8 border-b border-[#D5E4EE] dark:border-[#365A73] flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-white dark:bg-[#193B55]">
@@ -278,6 +283,7 @@ export function CorporaStandardsSection({
             </div>
           </div>
         </div>
+        </>}
       </div>
     </section>
   );

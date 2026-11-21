@@ -7,6 +7,7 @@ import {
 } from '../data/humnumData';
 
 interface MethodsGlossarySectionProps {
+  mode:'glossaire'|'bibliographie';
   isSaved: (id: string) => boolean;
   onToggleSaveBib: (entry: BibEntry) => void;
 }
@@ -53,6 +54,7 @@ function HighlightMatch({text, query}: {text: string; query: string}) {
 }
 
 export function MethodsGlossarySection({
+  mode,
   isSaved,
   onToggleSaveBib,
 }: MethodsGlossarySectionProps) {
@@ -99,7 +101,7 @@ export function MethodsGlossarySection({
   };
 
   return (
-    <section id="methodes" className="py-16 lg:py-20 border-b border-[#D5E4EE] dark:border-[#365A73] bg-[#F4F7F9] dark:bg-[#102A3E] transition-colors">
+    <section id={mode} className="py-16 lg:py-20 border-b border-[#D5E4EE] dark:border-[#365A73] bg-[#F4F7F9] dark:bg-[#102A3E] transition-colors">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
         {/* Section Heading */}
         <div className="pb-8 border-b border-[#D5E4EE] dark:border-[#365A73]">
@@ -109,13 +111,13 @@ export function MethodsGlossarySection({
             Vocabulaire critique &amp; ouvrages essentiels
           </p>
           <h2 className="font-serif text-3xl lg:text-4xl font-semibold text-[#193B55] dark:text-[#F4F7F9] text-balance">
-            Glossaire critique et bibliographie de référence
+            {mode === "glossaire" ? "Vocabulaire critique et notions fondamentales" : "Ouvrages et références scientifiques"}
           </h2>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <div className="mt-10 grid grid-cols-1 gap-10 items-start">
           {/* Left Column: Critical Glossary (5 cols) */}
-          <div className="lg:col-span-5">
+          {mode === "glossaire" && <div>
             <div className="flex items-center justify-between gap-4 mb-4">
               <h3 className="font-serif text-2xl font-semibold text-[#193B55] dark:text-[#F4F7F9]">
                 Glossaire des notions
@@ -185,7 +187,7 @@ export function MethodsGlossarySection({
               </div>
             </div>
 
-            <div className="border border-[#D5E4EE] dark:border-[#365A73] rounded-md bg-white dark:bg-[#193B55] divide-y divide-[#D5E4EE] dark:divide-[#365A73] max-h-[680px] overflow-y-auto">
+            <div className="border border-[#D5E4EE] dark:border-[#365A73] rounded-md bg-white dark:bg-[#193B55] divide-y divide-[#D5E4EE] dark:divide-[#365A73] ">
               {filteredGlossary.length === 0 ? (
                 <div className="p-8 text-center">
                   <p className="text-sm text-[#425E73] dark:text-[#C3D7E5]">
@@ -244,8 +246,9 @@ export function MethodsGlossarySection({
             </div>
           </div>
 
+          }
           {/* Right Column: Bibliography (7 cols) */}
-          <div className="lg:col-span-7">
+          {mode === "bibliographie" && <div>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
               <h3 className="font-serif text-2xl font-semibold text-[#193B55] dark:text-[#F4F7F9]">
                 Bibliographie essentielle
@@ -361,6 +364,7 @@ export function MethodsGlossarySection({
               })}
             </div>
           </div>
+          }
         </div>
       </div>
     </section>

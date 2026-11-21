@@ -41,7 +41,7 @@ export function HeroSection({
 
               <div className="mt-5 flex flex-wrap items-center gap-4">
                 <a
-                  href="#outils"
+                  href="/outils"
                   className="inline-flex items-center gap-2 px-5 py-3 text-sm font-medium text-white bg-[#2D5876] hover:bg-[#193B55] dark:bg-[#3D7497] dark:hover:bg-[#2D5876] rounded-md transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2D5876] dark:focus-visible:outline-[#D8C497]"
                 >
                   <span>Explorer la boîte à outils</span>
@@ -49,7 +49,7 @@ export function HeroSection({
                 </a>
 
                 <a
-                  href="#panorama"
+                  href="/panorama"
                   className="inline-flex items-center px-5 py-3 text-sm font-medium text-[#193B55] dark:text-[#F4F7F9] bg-transparent hover:bg-[#EAF2F7] dark:hover:bg-[#234760] border border-[#B9CEDD] dark:border-[#486C85] rounded-md transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2D5876] dark:focus-visible:outline-[#D8C497]"
                 >
                   Cycle de recherche

@@ -1,4 +1,6 @@
 import {useEffect, useState} from 'react';
+import {currentPage} from './data/pages';
+import {PageOverview, PageIntro} from './components/PageOverview';
 import {CorporaStandardsSection} from './components/CorporaStandardsSection';
 import {DetailDrawer} from './components/DetailDrawer';
 import {EcosystemSection} from './components/EcosystemSection';
@@ -25,6 +27,8 @@ const STORAGE_NOTE_KEY = 'humnum_project_note_v1';
 const STORAGE_THEME_KEY = 'humnum_theme_v1';
 
 export default function App() {
+  const page = currentPage();
+  useEffect(()=>{if(page.id==='accueil'){const legacy:Record<string,string>={panorama:'/panorama',outils:'/outils',corpus:'/corpus',methodes:'/glossaire',ecosysteme:'/ecosysteme'}; const target=legacy[location.hash.slice(1)]; if(target) location.replace(target);}},[page.id]);
   const [selectedTool, setSelectedTool] = useState<DhTool | null>(null);
   const [selectionDrawerOpen, setSelectionDrawerOpen] = useState(false);
 
@@ -139,6 +143,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col bg-[#F4F7F9] dark:bg-[#102A3E] text-[#193B55] dark:text-[#F4F7F9] transition-colors">
       <a href="#contenu" className="hn-skip">Aller au contenu</a>
       <Header
+        page={page.id}
         selectionCount={savedItems.length}
         onOpenSelection={() => setSelectionDrawerOpen(true)}
         isDark={isDark}
@@ -146,32 +151,14 @@ export default function App() {
       />
 
       <main id="contenu" className="flex-1">
-        <HeroSection
-          toolCount={TOOLS.length}
-          corpusCount={CORPORA.length}
-          bibCount={BIBLIOGRAPHY.length}
-          glossaryCount={GLOSSARY_TERMS.length}
-        />
-
-        <PanoramaSection onSelectTool={(tool) => setSelectedTool(tool)} />
-
-        <ToolsDirectorySection
-          onOpenTool={(tool) => setSelectedTool(tool)}
-          isSaved={isSaved}
-          onToggleSaveTool={handleToggleSaveTool}
-        />
-
-        <CorporaStandardsSection
-          isSaved={isSaved}
-          onToggleSaveCorpus={handleToggleSaveCorpus}
-        />
-
-        <MethodsGlossarySection
-          isSaved={isSaved}
-          onToggleSaveBib={handleToggleSaveBib}
-        />
-
-        <EcosystemSection />
+        {page.id==='accueil' ? <><HeroSection toolCount={TOOLS.length} corpusCount={CORPORA.length} bibCount={BIBLIOGRAPHY.length} glossaryCount={GLOSSARY_TERMS.length}/><PageOverview/></> : <>
+          <PageIntro id={page.id}/>
+          {page.id==='panorama' && <PanoramaSection onSelectTool={setSelectedTool}/>}
+          {page.id==='outils' && <ToolsDirectorySection onOpenTool={setSelectedTool} isSaved={isSaved} onToggleSaveTool={handleToggleSaveTool}/>}
+          {(page.id==='corpus'||page.id==='standards') && <CorporaStandardsSection mode={page.id} isSaved={isSaved} onToggleSaveCorpus={handleToggleSaveCorpus}/>}
+          {(page.id==='glossaire'||page.id==='bibliographie') && <MethodsGlossarySection mode={page.id} isSaved={isSaved} onToggleSaveBib={handleToggleSaveBib}/>}
+          {page.id==='ecosysteme' && <EcosystemSection/>}
+        </>}
       </main>
 
       <Footer onOpenSelection={() => setSelectionDrawerOpen(true)} />

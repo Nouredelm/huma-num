@@ -9,6 +9,7 @@ const rootDir = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig(() => {
   return {
+    build: {rollupOptions: {input: Object.fromEntries(['index','panorama','outils','corpus','standards','glossaire','bibliographie','ecosysteme'].map(name=>[name,path.resolve(rootDir,name+'.html')]))}},
     plugins: [
       react(),
       tailwindcss(),
