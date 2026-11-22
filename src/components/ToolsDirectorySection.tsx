@@ -28,6 +28,10 @@ const LICENSES: Array<'Toutes' | LicenseType> = [
   'Logiciel libre',
   'Institutionnel',
   'Freemium',
+  'Gratuit propriétaire',
+  'Commercial',
+  'Recherche restreinte',
+  'À vérifier',
 ];
 
 const LEVELS: Array<'Tous' | DifficultyLevel> = [
@@ -48,19 +52,20 @@ export function ToolsDirectorySection({
   const [selectedLevel, setSelectedLevel] = useState<'Tous' | DifficultyLevel>('Tous');
 
   const filteredTools = useMemo(() => {
-    const q = searchQuery.trim().toLowerCase();
+    const normalize=(s:string)=>s.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();
+    const q = normalize(searchQuery.trim());
     return TOOLS.filter((tool) => {
       if (selectedCategory !== 'Tous' && tool.category !== selectedCategory) return false;
       if (selectedLicense !== 'Toutes' && tool.license !== selectedLicense) return false;
       if (selectedLevel !== 'Tous' && tool.level !== selectedLevel) return false;
       if (!q) return true;
       return (
-        tool.name.toLowerCase().includes(q) ||
-        tool.summary.toLowerCase().includes(q) ||
-        tool.maintainer.toLowerCase().includes(q) ||
-        tool.description.toLowerCase().includes(q) ||
-        tool.useCases.some(v=>v.toLowerCase().includes(q)) ||
-        tool.formats.some((fmt) => fmt.toLowerCase().includes(q))
+        normalize(tool.name).includes(q) ||
+        normalize(tool.summary).includes(q) ||
+        normalize(tool.maintainer).includes(q) ||
+        normalize(tool.description).includes(q) ||
+        tool.useCases.some(v=>normalize(v).includes(q)) ||
+        tool.formats.some((fmt) => normalize(fmt).includes(q))
       );
     });
   }, [searchQuery, selectedCategory, selectedLicense, selectedLevel]);

@@ -232,5 +232,62 @@ export const METHODS=[
       "prov",
       "web-annotation"
     ]
+  },
+  {
+    "id": "method-9",
+    "title": "Humanités numériques arabes",
+    "description": "Explorer le patrimoine écrit, les corpus et les outils de traitement de l’arabe.",
+    "guideIds": [
+      "guide-36",
+      "guide-37",
+      "guide-38",
+      "guide-39",
+      "guide-40",
+      "guide-41"
+    ],
+    "toolIds": [
+      "camel-tools",
+      "farasa",
+      "pyarabic",
+      "kraken",
+      "qalsadi",
+      "stanza"
+    ],
+    "conceptIds": [
+      "unicode",
+      "tokenisation",
+      "normalisation",
+      "cer"
+    ],
+    "standardIds": [
+      "alto",
+      "tei"
+    ]
+  },
+  {
+    "id": "method-10",
+    "title": "Analyse qualitative",
+    "description": "Construire des catégories interprétatives, coder et confronter les lectures.",
+    "guideIds": [
+      "guide-1",
+      "guide-7",
+      "guide-8"
+    ],
+    "toolIds": [
+      "qualcoder",
+      "taguette",
+      "catma",
+      "maxqda",
+      "atlas-ti"
+    ],
+    "conceptIds": [
+      "biais",
+      "provenance",
+      "metadata"
+    ],
+    "standardIds": [
+      "web-annotation",
+      "prov"
+    ]
   }
 ];

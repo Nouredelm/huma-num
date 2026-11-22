@@ -5,7 +5,7 @@ type Draft=Record<typeof fields[number][0],string>;
 const empty=Object.fromEntries(fields.map(([k])=>[k,''])) as Draft;
 const KEY='humanum-research-draft-v1';
 export function ResearchStudio(){
- const [draft,setDraft]=useState<Draft>(()=>{try{return {...empty,...JSON.parse(localStorage.getItem(KEY)||'{}')};}catch{return empty;}});
+ const [draft,setDraft]=useState<Draft>(()=>{try{const raw=JSON.parse(localStorage.getItem(KEY)||'{}');return Object.fromEntries(fields.map(([k])=>[k,typeof raw?.[k]==='string'?raw[k].slice(0,12000):''])) as Draft;}catch{return empty;}});
  const [status,setStatus]=useState('');
  useEffect(()=>{try{localStorage.setItem(KEY,JSON.stringify(draft));setStatus('Brouillon conservé sur cet appareil.');}catch{setStatus('Stockage indisponible : exportez votre fiche.');}},[draft]);
  const count=fields.filter(([k])=>typeof draft[k]==='string'&&draft[k].trim()).length;
