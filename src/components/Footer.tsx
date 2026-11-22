@@ -17,19 +17,19 @@ export function Footer({onOpenSelection}: FooterProps) {
           </div>
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-[#425E73] dark:text-[#C3D7E5]">
-            <a href="/" className="hover:underline">Accueil</a>
+            <a href="/" className="hn-footer-action">Accueil</a>
             <button
               type="button"
               onClick={onOpenSelection}
-              className="font-medium text-[#2D5876] dark:text-[#D8C497] hover:underline underline-offset-4 cursor-pointer"
+              className="hn-footer-action"
             >
               Exporter ma bibliographie
             </button>
           </div>
         </div>
 
-        <div className="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-[#526A7C] dark:text-[#C3D7E5]">
-          <p>
+        <div className="hn-footer-bottom pt-4">
+          <p className="hn-footer-resources">
             Ressources documentées selon les principes de la science ouverte — Standards XML-TEI, IIIF, CIDOC-CRM &amp; FAIR.
           </p>
           <div className="hn-footer-attribution"><span>Portail éditorial HumaNum</span><span className="hn-footer-signature" aria-label="Signature : N. Elmqaddem">N. Elmqaddem</span></div>
