@@ -121,3 +121,6 @@ html{scroll-padding-top:5rem;}
 .hn-footer .hn-footer-description{color:#BFC9D1;font-size:.7875rem;line-height:1.25;font-weight:400}
 .hn-footer-description>span{display:block}
 @media(min-width:1024px){.hn-footer-description-details{white-space:nowrap}}
+
+/* Harmonisation de la mention éditoriale avec la signature */
+.hn-footer .hn-footer-attribution>span:first-child{font-family:var(--font-serif);font-size:.95rem;font-weight:600;letter-spacing:.01em;line-height:1.2}
