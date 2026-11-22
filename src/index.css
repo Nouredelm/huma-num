@@ -124,3 +124,8 @@ html{scroll-padding-top:5rem;}
 
 /* Harmonisation de la mention éditoriale avec la signature */
 .hn-footer .hn-footer-attribution>span:first-child{font-family:var(--font-serif);font-size:.95rem;font-weight:600;letter-spacing:.01em;line-height:1.2}
+
+/* Attribution HumaNum sur fond bleu nuit : police sans gras. */
+.hn-footer .hn-footer-attribution>span:first-child{font-weight:400;color:#EAD2AA}
+.hn-footer .hn-footer-attribution .hn-footer-signature,
+.dark .hn-footer .hn-footer-attribution .hn-footer-signature{font-weight:400;color:#CDD9E5}
