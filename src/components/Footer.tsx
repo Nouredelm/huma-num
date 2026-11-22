@@ -32,7 +32,7 @@ export function Footer({onOpenSelection}: FooterProps) {
           <p>
             Ressources documentées selon les principes de la science ouverte — Standards XML-TEI, IIIF, CIDOC-CRM &amp; FAIR.
           </p>
-          <p>Portail éditorial HumaNum</p>
+          <div className="hn-footer-attribution"><span>Portail éditorial HumaNum</span><span className="hn-footer-signature" aria-label="Signature : N. Elmqaddem">N. Elmqaddem</span></div>
         </div>
       </div>
     </footer>
