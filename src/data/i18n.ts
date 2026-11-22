@@ -12,6 +12,10 @@ const data={
       "description": "بوابة الإنسانيات الرقمية"
     }
   },
+  "decouvrir": {
+    "en": {"title": "Discover digital humanities", "description": "An introduction to the field, its history, methods and critical questions."},
+    "ar": {"title": "مدخل إلى الإنسانيات الرقمية", "description": "مقدمة إلى المجال وتاريخه ومناهجه وأسئلته النقدية."}
+  },
   "panorama": {
     "en": {
       "title": "Overview & methods",

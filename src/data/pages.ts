@@ -1,7 +1,8 @@
-import {Home, Compass, Wrench, Database, FileCode, BookOpen, Library, Network, Shapes, Brain, GraduationCap, Globe, FlaskConical, Share2, Search, FolderOpen, BookMarked, PlayCircle, Rss, Columns3, ClipboardList, Unlock, Languages, ChartNoAxesCombined} from 'lucide-react';
+import {Home, Compass, Wrench, Database, FileCode, BookOpen, Library, Network, Shapes, Brain, GraduationCap, Globe, FlaskConical, Share2, Search, FolderOpen, BookMarked, PlayCircle, Rss, Columns3, ClipboardList, Unlock, Languages, ChartNoAxesCombined, BookOpenText} from 'lucide-react';
 import {GENERATED_IMAGES} from './humnumData';
 export const PAGES = [
   {id:'accueil', href:'/', title:'Accueil', label:'Accueil', icon:Home, description:'Portail des humanités numériques', image:GENERATED_IMAGES.heroArchive},
+  {id:'decouvrir',href:'/decouvrir',title:'Découvrir les humanités numériques',label:'Découvrir',icon:BookOpenText,description:'Une introduction au domaine, à son histoire, à ses méthodes et à ses enjeux critiques.',image:GENERATED_IMAGES.editorialPrinting},
   {id:'panorama',href:'/panorama',title:'Panorama & méthodes',label:'Panorama',icon:Compass,description:"Explorer les étapes du cycle de recherche, les méthodes et les repères historiques.",image:GENERATED_IMAGES.spatialAtlas},
   {id:'outils',href:'/outils',title:'Outils',label:'Outils',icon:Wrench,description:"Choisir les logiciels et services adaptés à vos corpus et questions de recherche.",image:null},
   {id:'corpus',href:'/corpus',title:'Corpus',label:'Corpus',icon:Database,description:"Découvrir les bibliothèques numériques, les archives et les collections ouvertes.",image:GENERATED_IMAGES.corpusDigitization},

@@ -4,7 +4,7 @@ import {PAGES,type PageId} from '../data/pages';
 import {useLang,switchLang,localPage,words,type Lang} from '../data/i18n';
 interface HeaderProps {page:PageId;selectionCount:number;onOpenSelection:()=>void;isDark:boolean;onToggleTheme:()=>void;}
 const GROUPS:{title:string;ids:PageId[]}[]=[
- {title:'Comprendre & apprendre',ids:['accueil','panorama','disciplines','formations','cas','mediatheque','arabes']},
+ {title:'Comprendre & apprendre',ids:['accueil','decouvrir','panorama','disciplines','formations','cas','mediatheque','arabes']},
  {title:'Explorer & expérimenter',ids:['outils','corpus','standards','ia','laboratoire','cartographie','comparateur','ateliers','chercheur']},
  {title:'Se documenter & échanger',ids:['glossaire','bibliographie','ecosysteme','mondes','bibliotheque','veille','recherche','science-ouverte']}
 ];

@@ -4,8 +4,10 @@ import {PAGES} from '../data/pages';
 import {TOOLS,CORPORA,STANDARDS,GLOSSARY_TERMS,BIBLIOGRAPHY,ECOSYSTEM_ITEMS,RESEARCH_PHASES} from '../data/humnumData';
 import {EDITORIAL} from '../data/editorial';
 import {GUIDES} from '../data/researchGuides';
+import {HISTORY_MILESTONES} from '../data/discovery';
 type Result={id:string;group:string;title:string;description:string;extra:string;href:string};
 const index:Result[]=[
+ ...HISTORY_MILESTONES.map(m=>({id:'history-'+m.id,group:'Histoire',title:m.year+' · '+m.title,description:m.description,extra:m.subtitle+' '+m.source,href:'/decouvrir#milestone-'+m.id})),
  ...EDITORIAL.map(r=>({id:'editorial-'+r.id,group:r.page==='cas'?'Études de cas':r.page==='bibliotheque'?'Bibliothèque':'Médiathèque',title:r.title,description:r.description,extra:[r.source,r.category,r.language,r.context,r.method,r.resources].join(' '),href:'/'+r.page+'#editorial-'+r.id})),
  ...PAGES.filter(p=>p.id!=='recherche').map(p=>({id:'page-'+p.id,group:'Pages',title:p.title,description:p.description,extra:p.label,href:p.href})),
  ...TOOLS.map(t=>({id:'tool-'+t.id,group:'Outils',title:t.name,description:t.summary,extra:[t.category,t.description,...t.formats,...t.useCases,...t.workflowSteps].join(' '),href:'/outils#tool-'+t.id})),

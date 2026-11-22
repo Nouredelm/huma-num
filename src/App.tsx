@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import {Laboratory} from './components/Laboratory';
+import {AboutDigitalHumanities,DiscoveryTeaser} from './components/AboutDigitalHumanities';
 import {KnowledgeMap} from './components/KnowledgeMap';
 import {GlobalSearch} from './components/GlobalSearch';
 import {EditorialResources} from './components/EditorialResources';
@@ -161,8 +162,9 @@ export default function App() {
       />
 
       <main id="contenu" className="flex-1">
-        {page.id==='accueil' ? <><HeroSection toolCount={TOOLS.length} corpusCount={CORPORA.length} bibCount={BIBLIOGRAPHY.length} glossaryCount={GLOSSARY_TERMS.length}/><PageOverview/></> : <>
+        {page.id==='accueil' ? <><HeroSection toolCount={TOOLS.length} corpusCount={CORPORA.length} bibCount={BIBLIOGRAPHY.length} glossaryCount={GLOSSARY_TERMS.length}/><DiscoveryTeaser/><PageOverview/></> : <>
           <PageIntro id={page.id}/>
+          {page.id==='decouvrir' && <AboutDigitalHumanities/>}
           {page.id==='panorama' && <PanoramaSection onSelectTool={setSelectedTool}/>}
           {page.id==='outils' && <ToolsDirectorySection onOpenTool={setSelectedTool} isSaved={isSaved} onToggleSaveTool={handleToggleSaveTool}/>}
           {(page.id==='corpus'||page.id==='standards') && <CorporaStandardsSection mode={page.id} isSaved={isSaved} onToggleSaveCorpus={handleToggleSaveCorpus}/>}
