@@ -11,8 +11,9 @@ export function Footer({onOpenSelection}: FooterProps) {
             <p className="font-serif text-2xl font-semibold text-[#193B55] dark:text-[#F4F7F9]">
               Huma<span className="hn-brand-accent">Num</span>
             </p>
-            <p className="mt-1 text-sm text-[#425E73] dark:text-[#C3D7E5] max-w-md">
-              Portail de référence pour les humanités numériques : méthodes, logiciels libres, corpus patrimoniaux et standards ouverts.
+            <p className="hn-footer-description mt-1 max-w-md">
+              <span>Portail de référence pour les humanités numériques :</span>
+              <span className="hn-footer-description-details">méthodes, logiciels libres, corpus patrimoniaux et standards ouverts.</span>
             </p>
           </div>
 

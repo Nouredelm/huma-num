@@ -116,3 +116,8 @@ html{scroll-padding-top:5rem;}
 .hn-footer .hn-footer-action:hover,.hn-footer .hn-footer-action:focus-visible{color:#DCEEF8}
 @media(max-width:980px){.hn-footer-bottom{flex-wrap:wrap;row-gap:10px}.hn-footer .hn-footer-resources{white-space:normal;flex-basis:100%}.hn-footer-attribution{margin-inline-start:auto}}
 @media(max-width:640px){.hn-footer-attribution{gap:8px;flex-wrap:wrap;justify-content:flex-start;margin-inline-start:0}.hn-footer-signature{padding-inline-start:10px;font-size:1.017rem}.hn-footer .hn-footer-resources{font-size:11px}.hn-footer-bottom{align-items:flex-start}}
+
+/* Sous-titre du pied de page : deux lignes continues, gris, police -10 % */
+.hn-footer .hn-footer-description{color:#BFC9D1;font-size:.7875rem;line-height:1.25;font-weight:400}
+.hn-footer-description>span{display:block}
+@media(min-width:1024px){.hn-footer-description-details{white-space:nowrap}}
